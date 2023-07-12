@@ -1,1 +1,73 @@
-html {}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+}
+
+.wrapper {
+  width: 1440px;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+header {
+  background: black;
+  color: #FFFFFF;
+  display: flex;
+  min-height: 90px;
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+  header h1 {
+    font-family: 'Forum';
+    font-style: normal;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+
+  header div img {
+    width: 28px;
+  }
+
+  header div {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+nav {}
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 20px;
+  }
+
+  nav ul li {transition: 0.5s;}
+
+  nav ul li:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    overflow: hidden;
+    transition: 0.5s;
+  }
+
