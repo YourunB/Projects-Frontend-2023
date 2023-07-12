@@ -108,3 +108,80 @@ section{}
 }
 
 .welcome div h2 span {white-space: nowrap;}
+
+.section-size {padding: 20px 20px 40px 20px;}
+
+.section-name{}
+
+.section-name h2{
+  color: #0C0C0E;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.section-name__line {
+  height: 40px;
+  width: 50px;
+  border-top: solid 1px #0C0C0E;
+  margin: 0 auto;
+}
+
+.about {
+  padding-bottom: calc(40px - 26px + 16px);
+}
+
+.about p {
+  margin: 0;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+.about__images {
+  margin-top: 20px;
+}
+
+.about__images_image {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about__images_button {
+  display: flex;
+  justify-content: center;
+}
+
+.about__images_button div {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: calc(40px - 26px + 16px);
+}
+
+.about__images_button div button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: none;
+  background: #0C0C0E;
+}
+
+.about__images_button div:nth-child(1) button {background: #BB945F;}
+
+  .about__images_button div:hover {
+    cursor: pointer;
+  }
