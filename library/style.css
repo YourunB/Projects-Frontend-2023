@@ -5,12 +5,11 @@ html {
 body {
   margin: 0;
   padding: 0;
-  display: grid;
-  justify-items: center;
 }
 
 .wrapper {
   width: 1440px;
+  margin: 0 auto;
 }
 
 a {
@@ -19,7 +18,7 @@ a {
 }
 
 header {
-  background: black;
+  background: #0C0C0E;
   color: #FFFFFF;
   display: flex;
   min-height: 90px;
@@ -35,6 +34,7 @@ header {
     font-style: normal;
     font-size: 30px;
     font-weight: 400;
+    line-height: 50px;
     margin: 0;
     padding: 0;
   }
@@ -62,7 +62,10 @@ nav {}
     font-size: 20px;
   }
 
-  nav ul li {transition: 0.5s;}
+  nav ul li {
+    transition: 0.5s;
+    line-height: 50px;
+  }
 
   nav ul li:hover {
     cursor: pointer;
@@ -71,3 +74,37 @@ nav {}
     transition: 0.5s;
   }
 
+section{}
+
+.welcome {
+  height: 600px;
+  background: url('assets/img/Welcome.png') no-repeat;
+  position: relative;
+}
+
+.welcome div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 35px 40px;
+  width: calc(600px - 80px);
+  height: calc(220px - 70px);
+  background: #0C0C0E;
+  position: absolute;
+  top: 220px;
+}
+
+.welcome div h2 {
+  color: #FFF;
+  text-align: center;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.welcome div h2 span {white-space: nowrap;}
