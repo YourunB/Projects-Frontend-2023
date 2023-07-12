@@ -41,6 +41,14 @@ header {
 
   header div img {
     width: 28px;
+    transition: 0.5s;
+  }
+
+  header div img:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+    overflow: hidden;
+    cursor: pointer;  
   }
 
   header div {
@@ -170,6 +178,7 @@ section{}
   justify-content: center;
   align-items: center;
   margin-top: calc(40px - 26px + 16px);
+  transition: 0.5s;
 }
 
 .about__images_button div button {
@@ -184,4 +193,9 @@ section{}
 
   .about__images_button div:hover {
     cursor: pointer;
+    transform: scale(1.2);
+    transition: 0.5s;
+    overflow: hidden;
   }
+
+  .about__images_button div button:hover {cursor: pointer;}
