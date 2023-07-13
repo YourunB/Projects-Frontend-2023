@@ -271,9 +271,8 @@ section{}
   width: 75px;
   height: 30px;
   border-radius: 2px;
+  border: 1px solid;
   background: none;
-  border: 1px solid #0C0C0E;
-  color: #0C0C0E;
   text-align: center;
   font-family: Inter;
   font-size: 10px;
@@ -287,13 +286,24 @@ section{}
   transition: 0.5s;
 }
 
-  .favorites__books_box button:hover,
-  .favorites__books_box button:active,
-  .favorites__books_box button:focus {
+.favorites__books_box_btn-buy {
+  border-color: #0C0C0E;
+  color: #0C0C0E;
+}
+
+  .favorites__books_box_btn-buy:hover,
+  .favorites__books_box_btn-buy:active,
+  .favorites__books_box_btn-buy:focus {
+    background: #BB945F;
+    border-color: #BB945F;
     cursor: pointer;
+  }
+
+  .favorites__books_box_btn-buy:disabled {
     color: #BB945F;
     border-color: #BB945F;
-    transition: 0.5s;
+    background: none;
+    cursor:default;
   }
 
 .favorites__books_box p {
@@ -353,5 +363,4 @@ section{}
   line-height: 40px;
   letter-spacing: 2px;
   text-transform: capitalize;
-  text-transform: lowercase; 
 }
