@@ -244,10 +244,10 @@ section{}
 }
 
 .favorites__books {
-  padding-bottom: 40px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  row-gap: 40px;
 } 
 
 .favorites__books_box {
@@ -256,7 +256,6 @@ section{}
   border: solid 1px #000000;
   padding: 15px 0 15px 20px;
   margin-right: 40px;
-  margin-bottom: 40px;
   position: relative;
 }
 
