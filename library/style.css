@@ -221,18 +221,19 @@ section{}
 .favorites__pick div {
   margin-top: calc(40px - 5px);
   margin-bottom: calc(40px - 5px);
+  display: flex;
+  align-items: center;
 }
 
 .favorites__pick div input {
   width: 17px;
   height: 27px; /* for more area click */
-  padding: 20px;
-  vertical-align: middle;
 }
 
 .favorites__pick div label {
+  display: flex;
+  align-items: center;
   height: 27px; /* for more area click */
-  vertical-align: middle;
   padding-left: 20px;
   color: #000;
   font-family: Inter;
