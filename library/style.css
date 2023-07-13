@@ -5,11 +5,13 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: #8E8E8E;
 }
 
 .wrapper {
   width: 1440px;
   margin: 0 auto;
+  background: #FFFFFF;
 }
 
 a {
@@ -282,7 +284,17 @@ section{}
   position: absolute;
   bottom: 15px;
   left: 20px;
+  transition: 0.5s;
 }
+
+  .favorites__books_box button:hover,
+  .favorites__books_box button:active,
+  .favorites__books_box button:focus {
+    cursor: pointer;
+    color: #BB945F;
+    border-color: #BB945F;
+    transition: 0.5s;
+  }
 
 .favorites__books_box p {
   color: #000;
@@ -329,3 +341,17 @@ section{}
 }
 
 .unvisible {display: none;}
+
+.coffee p {
+  margin: 0;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  text-transform: lowercase; 
+}
