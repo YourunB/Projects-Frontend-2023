@@ -352,8 +352,14 @@ section{}
 
 .unvisible {display: none;}
 
+.container-coffee-menu {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .coffee p {
-  margin: 0;
+  margin: 0 0 40px 0;
   color: #000;
   text-align: center;
   font-family: Inter;
@@ -364,3 +370,42 @@ section{}
   letter-spacing: 2px;
   text-transform: capitalize;
 }
+
+.coffee__menu_line {
+  background: #BB945F;
+  width: 100px;
+  height: 1px;
+  margin: 0 40px;
+}
+
+.coffee__menu {border-collapse: collapse;}
+
+.coffee__menu thead tr th {
+  color: #BB945F;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  padding-bottom: 20px;
+}
+
+.coffee__menu tbody tr td {
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  padding: 20px 0;
+}
+
+.coffee__menu tbody tr:last-of-type td {padding-bottom: 0;}
+.coffee__menu tbody tr td:last-of-type {font-family: Forum;}
+
+.coffee__menu_coffee {text-align: left;}
+.coffee__menu_desert {text-align: right;}
