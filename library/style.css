@@ -409,3 +409,47 @@ section{}
 
 .coffee__menu_coffee {text-align: left;}
 .coffee__menu_desert {text-align: right;}
+
+.contacts {}
+
+.contacts__box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts__box iframe {
+  width: 696px;
+  height: 414px;
+}
+
+.contacts__box_numbers {
+  text-align: left;
+  color: #000;
+  font-family: Inter;
+  font-style: normal;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+
+.contacts__box_numbers h3 {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 0 40px 0;
+}
+
+.contacts__box_numbers h4 {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 40px 0 0 0;
+}
+
+.contacts__box_numbers p {
+  margin: 20px 0;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.contacts__box_numbers p:last-of-type {margin-bottom: 0;}
+
+.contacts__box_numbers span {font-weight: 700;}
