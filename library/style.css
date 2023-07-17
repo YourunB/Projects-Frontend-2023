@@ -109,7 +109,7 @@ section{}
   top: 220px;
 }
 
-.welcome div h2 {
+.welcome div h3 {
   color: #FFF;
   text-align: center;
   font-family: Forum;
@@ -121,7 +121,7 @@ section{}
   text-transform: uppercase;
 }
 
-.welcome div h2 span {white-space: nowrap;}
+.welcome div h3 span {white-space: nowrap;}
 
 .section-size {padding: 20px 20px 40px 20px;}
 
@@ -184,10 +184,10 @@ section{}
   justify-content: center;
   align-items: center;
   margin-top: 35px;
-  transition: 0.5s;
+  transition: 1s;
 }
 
-.about__images_button div button {
+.about__images_button div a {
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -195,16 +195,14 @@ section{}
   background: #0C0C0E;
 }
 
-.about__images_button div:nth-child(1) button {background: #BB945F;}
+.about__images_button div:nth-child(1) a {background: #BB945F;}
 
   .about__images_button div:hover {
     cursor: pointer;
     transform: scale(1.2);
-    transition: 0.5s;
+    transition: 1s;
     overflow: hidden;
   }
-
-  .about__images_button div button:hover {cursor: pointer;}
 
 .favorites {margin-top: 5px;}
 
@@ -349,7 +347,7 @@ section{}
   border-top: solid 1px #BB945F;
 }
 
-.favorites__books_box h2 {
+.favorites__books_box h3 {
   padding: 0;
   margin: 0;
   color: #000;
@@ -362,7 +360,7 @@ section{}
   text-transform: uppercase;
 }
 
-.favorites__books_box h2 span {
+.favorites__books_box h3 span {
   text-transform: lowercase;
   text-transform: capitalize;
 }
@@ -679,19 +677,18 @@ footer {
   justify-content: space-between;
 }
 
-.footer-social__network {
+.footer-social__network-list {
+  padding: 0;
+  margin: 0;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   gap: 15px;
+  list-style-type: none;
 }
 
-.footer-social__network img {
-  display: block;
-  transition: 1s;
-}
+.footer-social__network-list_item {transition: 1s;}
 
-.footer-social__network img:hover {
+.footer-social__network-list_item:hover {
   transform: scale(1.5);
   overflow: hidden;
   transition: 1s;
