@@ -487,8 +487,8 @@ section{}
   max-width: 620px;
 }
 
-.library__block form legend {
-  display: inline;
+.library__block form h3 {
+  margin: 0;
   text-align: center;
   color: #000;
   font-family: Inter;
@@ -701,8 +701,9 @@ footer {
 }
 
 .footer-year {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
 }
 
 .footer-year p {
@@ -712,10 +713,14 @@ footer {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 40px;
   letter-spacing: 2px;
+  margin: 0;
+  width:fit-content;
   transition: 1s;
 }
+
+.footer-year p:first-of-type {justify-self: left;}
+.footer-year p:last-of-type {justify-self: right;}
 
 .footer-year p:nth-child(2):hover,
 .footer-year p:nth-child(3):hover {
