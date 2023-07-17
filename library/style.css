@@ -43,12 +43,12 @@ header {
 
   header div img {
     width: 28px;
-    transition: 0.5s;
+    transition: 1s;
   }
 
   header div img:hover {
     transform: scale(1.2);
-    transition: 0.5s;
+    transition: 1s;
     overflow: hidden;
     cursor: pointer;  
   }
@@ -73,7 +73,7 @@ nav {}
   }
 
   nav ul li {
-    transition: 0.5s;
+    transition: 1s;
     line-height: 50px;
   }
 
@@ -81,7 +81,9 @@ nav {}
     cursor: pointer;
     transform: scale(1.1);
     overflow: hidden;
-    transition: 0.5s;
+    transition: 1s;
+    color: #BB945F;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
   }
 
 section{}
@@ -230,7 +232,26 @@ section{}
 .favorites__pick div input {
   width: 17px;
   height: 27px; /* for more area click */
+  transition: 1s;
 }
+
+  .favorites__pick div input:hover,
+  .favorites__pick div input:focus,
+  .favorites__pick div input:active {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: 1s;
+    overflow: hidden;
+  }
+
+  .favorites__pick div label:hover,
+  .favorites__pick label:active {
+    cursor: pointer;
+    transform: scale(1.05);
+    color: #BB945F;
+    text-shadow: 2px 2px 4px rgba(66, 66, 66, 0.6);
+    transition: 1s;
+  }
 
 .favorites__pick div label {
   display: flex;
@@ -243,6 +264,7 @@ section{}
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  transition: 1s;
 }
 
 .favorites__books {
@@ -283,7 +305,7 @@ section{}
   position: absolute;
   bottom: 15px;
   left: 20px;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .favorites__books_box_btn-buy {
@@ -537,7 +559,7 @@ section{}
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1px;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .library-card button:hover {
@@ -545,7 +567,7 @@ section{}
   background: #BB945F;
   border-color: #BB945F;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .reader-card {}
@@ -594,7 +616,7 @@ section{}
   border-radius: 2px;
   border: 1px solid #0C0C0E;
   background: none;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .reader-card__buttons button:hover {
@@ -602,5 +624,104 @@ section{}
   background: #BB945F;
   border-color: #BB945F;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 1s;
+}
+
+footer {
+  padding: 20px 20px 44px 20px;
+  background: #0C0C0E;
+}
+
+.footer-adress {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-adress p {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+  transition: 1s;
+}
+
+.footer-adress p:last-of-type {text-align: right;}
+
+.footer-adress p:first-of-type:hover {
+  transform: scale(1.05);
+  transition: 1s;
+  color: #BB945F;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+}
+
+.footer-social {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-social__network {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-social__network img {
+  display: block;
+  transition: 1s;
+}
+
+.footer-social__network img:hover {
+  transform: scale(1.5);
+  overflow: hidden;
+  transition: 1s;
+}
+
+.footer-social p {
+  color: #FFF;
+  text-align: right;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+}
+
+.footer-line {
+  height: 1px;
+  background: #FFF;
+  margin-top: 30px;
+  margin-bottom: 44px;
+}
+
+.footer-year {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-year p {
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  transition: 1s;
+}
+
+.footer-year p:nth-child(2):hover,
+.footer-year p:nth-child(3):hover {
+  transform: scale(1.05);
+  transition: 1s;
+  color: #BB945F;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
 }
