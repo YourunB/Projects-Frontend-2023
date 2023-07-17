@@ -32,11 +32,13 @@ header {
 }
 
   header h1 {
-    font-family: 'Forum';
-    font-style: normal;
+    color: #FFF;
+    font-family: Forum;
     font-size: 30px;
+    font-style: normal;
     font-weight: 400;
-    line-height: 50px;
+    line-height: 50px; /* 166.667% */
+    letter-spacing: 0.6px;
     margin: 0;
     padding: 0;
   }
@@ -114,7 +116,7 @@ section{}
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
-  line-height: 50px;
+  line-height: 50px; /* 125% */
   letter-spacing: 3px;
   text-transform: uppercase;
 }
@@ -181,7 +183,7 @@ section{}
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: calc(40px - 26px + 16px);
+  margin-top: 35px;
   transition: 0.5s;
 }
 
@@ -204,7 +206,7 @@ section{}
 
   .about__images_button div button:hover {cursor: pointer;}
 
-.favorites {}
+.favorites {margin-top: 5px;}
 
 .favorites p {
   color: #000;
@@ -223,8 +225,8 @@ section{}
 }
 
 .favorites__pick div {
-  margin-top: calc(40px - 5px);
-  margin-bottom: calc(40px - 5px);
+  margin-top: 38px;
+  margin-bottom: 38px;
   display: flex;
   align-items: center;
 }
@@ -258,6 +260,7 @@ section{}
   align-items: center;
   height: 27px; /* for more area click */
   padding-left: 20px;
+  padding-right: 2px;
   color: #000;
   font-family: Inter;
   font-size: 20px;
@@ -359,6 +362,11 @@ section{}
   text-transform: uppercase;
 }
 
+.favorites__books_box h2 span {
+  text-transform: lowercase;
+  text-transform: capitalize;
+}
+
 .favorites__books_box_discription {
   margin-top: 20px;
   width: 355px;
@@ -390,14 +398,13 @@ section{}
   font-weight: 400;
   line-height: 40px;
   letter-spacing: 2px;
-  text-transform: capitalize;
 }
 
 .coffee__menu_line {
   background: #BB945F;
   width: 100px;
   height: 1px;
-  margin: 0 40px;
+  margin: 0 60px;
 }
 
 .coffee__menu {border-collapse: collapse;}
@@ -440,7 +447,7 @@ section{}
 }
 
 .contacts__box iframe {
-  width: 696px;
+  width: 688px;
   height: 414px;
 }
 
@@ -503,19 +510,19 @@ section{}
 .library-card {
   border: solid 3px #BB945F;
   background: #FFF;
-  padding: 20px 20px 30px 20px;
+  padding: 17px 17px 26px 17px;
   width: 600px;
   box-sizing: border-box;
-  box-shadow: 1px 3px 3px 0px rgba(100, 100, 100, 0.2);
+  box-shadow: 0 4px 3px 0px rgba(100, 100, 100, 0.4);
 }
 
 .library-card__card {
   background: #BB945F;
   padding: 20px 20px 25px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 19px;
 }
 
-.library-card__card h3 {
+.library-card__card h4 {
   color: #000;
   font-family: Forum;
   font-size: 30px;
@@ -549,8 +556,8 @@ section{}
   margin: auto;
   padding: 10px 40px;
   border-radius: 2px;
-  background: none;
   border: 1px solid #0C0C0E;
+  background: none;
   color: #0C0C0E;
   text-align: center;
   font-family: Inter;
@@ -606,16 +613,24 @@ section{}
 }
 
 .reader-card__buttons button {
+  display: flex;
   width: 75px;
   height: 30px;
+  padding: 10px 0px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
   color: #0C0C0E;
+  text-align: center;
   font-family: Inter;
   font-size: 10px;
   font-style: normal;
   font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  background: none;
   border-radius: 2px;
   border: 1px solid #0C0C0E;
-  background: none;
   transition: 1s;
 }
 
