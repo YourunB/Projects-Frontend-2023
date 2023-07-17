@@ -358,7 +358,40 @@
           </div>
         </section>
 
-        <section class="section-size"></section>
+        <section class="library section-size" id="library">
+          <div class="section-name">
+            <h2>Digital Library Cards</h2>
+            <div class="section-name__line"></div>
+          </div>
+
+          <div class="library__block">
+
+            <form>
+              <legend>Find your Library card</legend>
+
+              <div class="library-card">
+                <div class="library-card__card">
+                  <h3>Brooklyn Public Library</h3>
+                  <input id="cardName" type="text" value="Reader's name" pattern="^[a-zA-Z 0-9 -]+$">
+                  <input id="cardNumber" type="text" value="Card number" pattern="^[a-zA-Z 0-9 -]+$">
+                </div>
+                <button id="btnCheckCard">Check the card</button>
+              </div>
+            </form>
+
+            <div class="reader-card">
+              <h4>Get a reader card</h4>
+              <p>You will be able to see a reader card after
+                <br>logging into account or you can register a new
+                <br>account</p>
+                <div class="reader-card__buttons">
+                  <button id="btnSignUp">Sign Up</button>
+                  <button id="btnLogIn">Log in</button>
+                </div>
+            </div>
+
+          </div>
+        </section>
 
       </main>
 
