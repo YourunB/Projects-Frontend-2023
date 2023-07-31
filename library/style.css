@@ -233,6 +233,7 @@ section{}
   width: 17px;
   height: 27px; /* for more area click */
   transition: 1s;
+  visibility: hidden;
 }
 
   .favorites__pick_item:hover,
