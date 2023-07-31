@@ -242,10 +242,35 @@ section{}
     transform: scale(1.2);
     transition: 1s;
     overflow: hidden;
-    font-weight: 700;
   }
 
-  .favorites__pick_item:checked + label {font-weight: 700;}
+.favorites__pick_item:checked + label {font-weight: 700;}
+
+.favorites__pick_item:after {
+    width: 17px;
+    height: 17px;
+    border-radius: 15px;
+    top: 4px;
+    left: -2px;
+    position: relative;
+    content: url("assets/svg/input.svg");
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.favorites__pick_item:checked:after {
+    width: 17px;
+    height: 17px;
+    border-radius: 15px;
+    top: 4px;
+    left: -2px;
+    position: relative;
+    content: url("assets/svg/input-checked.svg");
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
 
   .favorites__pick div label:hover,
   .favorites__pick label:active {
