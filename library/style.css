@@ -240,26 +240,28 @@ section{}
   .favorites__pick_item:focus,
   .favorites__pick_item:active {
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: 1s;
     overflow: hidden;
   }
 
-  .favorites__pick_item:checked + label {
-    text-shadow: 0px 0px 1px black;
+  .favorites__pick_item:hover + label,
+  .favorites__pick_item:focus + label,
+  .favorites__pick_item:active + label {
+    color: #BB945F;
+    transform: scale(1.05);
   }
 
   .favorites__pick_item:after {
     width: 17px;
-    height: 17px;
+    height: 27px;
     border-radius: 15px;
-    top: 4px;
-    left: -1px;
+    top: 7px;
+    left: 0;
     position: relative;
     content: url("assets/svg/input.svg");
     display: inline-block;
     visibility: visible;
-    border: 2px solid white;
 }
 
 .favorites__pick_item:checked:after {content: url("assets/svg/input-checked.svg");}
@@ -268,8 +270,7 @@ section{}
   display: flex;
   align-items: center;
   height: 27px; /* for more area click */
-  padding-left: 20px;
-  padding-right: 2px;
+  padding-left: 19px;
   color: #000;
   font-family: Inter;
   font-size: 20px;
@@ -277,6 +278,9 @@ section{}
   font-weight: 400;
   line-height: normal;
   transition: 1s;
+  visibility: hidden;
+  font-weight: 700;
+  position: relative;
 }
 
 .favorites__pick div label:hover,
@@ -284,6 +288,25 @@ section{}
   cursor: pointer;
   transform: scale(1.05);
   color: #BB945F;
+}
+
+.favorites__pick div label::after {
+  font-weight: 400;
+  left: 1px;
+  top: -3px;
+  position: absolute;
+  display: inline-block;
+  visibility: visible;
+  padding: 5px 5px 5px 20px;
+}
+
+.favorites__pick div:nth-child(1) label::after {content: 'Winter';}
+.favorites__pick div:nth-child(2) label::after {content: 'Spring';}
+.favorites__pick div:nth-child(3) label::after {content: 'Summer';}
+.favorites__pick div:nth-child(4) label::after {content: 'Autumn';}
+
+.favorites__pick_item:checked + label::after {
+  font-weight: 700;
 }
 
 .favorites__books {
