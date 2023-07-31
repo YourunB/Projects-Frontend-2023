@@ -224,7 +224,7 @@ section{}
 
 .favorites__pick div {
   margin-top: 38px;
-  margin-bottom: 38px;
+  margin-bottom: 39px;
   display: flex;
   align-items: center;
 }
@@ -245,14 +245,16 @@ section{}
     overflow: hidden;
   }
 
-.favorites__pick_item:checked + label {font-weight: 700;}
+  .favorites__pick_item:checked + label {
+    text-shadow: 0px 0px 1px black;
+  }
 
-.favorites__pick_item:after {
+  .favorites__pick_item:after {
     width: 17px;
     height: 17px;
     border-radius: 15px;
     top: 4px;
-    left: -2px;
+    left: -1px;
     position: relative;
     content: url("assets/svg/input.svg");
     display: inline-block;
@@ -260,27 +262,7 @@ section{}
     border: 2px solid white;
 }
 
-.favorites__pick_item:checked:after {
-    width: 17px;
-    height: 17px;
-    border-radius: 15px;
-    top: 4px;
-    left: -2px;
-    position: relative;
-    content: url("assets/svg/input-checked.svg");
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid white;
-}
-
-  .favorites__pick div label:hover,
-  .favorites__pick label:active {
-    cursor: pointer;
-    transform: scale(1.05);
-    color: #BB945F;
-    text-shadow: 2px 2px 4px rgba(66, 66, 66, 0.6);
-    transition: 1s;
-  }
+.favorites__pick_item:checked:after {content: url("assets/svg/input-checked.svg");}
 
 .favorites__pick div label {
   display: flex;
@@ -295,6 +277,13 @@ section{}
   font-weight: 400;
   line-height: normal;
   transition: 1s;
+}
+
+.favorites__pick div label:hover,
+.favorites__pick label:active {
+  cursor: pointer;
+  transform: scale(1.05);
+  color: #BB945F;
 }
 
 .favorites__books {
