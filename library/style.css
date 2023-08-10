@@ -815,7 +815,10 @@ footer {
   transform: translateX(0);
 }
 
-.burger-menu {display: none;}
+.burger-menu {
+  width: 45px;
+  display: none;
+}
 
 @media (max-width: 1400px) {
   .about__images_image {
@@ -866,7 +869,8 @@ footer {
   }
 
   .burger-menu {
-    display: block;
+    display: grid;
+    justify-content: center;
   }
 
   .about__images_image img:nth-child(3) {
