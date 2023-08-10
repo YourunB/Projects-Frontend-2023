@@ -816,6 +816,7 @@ footer {
 }
 
 .burger-menu {
+  height: 34px;
   width: 45px;
   display: none;
 }
@@ -871,6 +872,7 @@ footer {
   .burger-menu {
     display: grid;
     justify-content: center;
+    align-items: center;
   }
 
   .about__images_image img:nth-child(3) {
