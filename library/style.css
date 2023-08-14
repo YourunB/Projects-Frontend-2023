@@ -73,6 +73,10 @@ nav {}
     font-size: 20px;
   }
 
+  nav ul li a {
+    display: block;
+  }
+
   nav ul li {
     transition: 1s;
     line-height: 50px;
