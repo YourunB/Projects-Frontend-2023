@@ -23,3 +23,15 @@ window.addEventListener("resize", function hideMenu() {
     checkMenuImg();
   }
 });
+
+menu.addEventListener("click", ()=>{
+  if (event.target.tagName === "A")
+  menu.classList.toggle("show-menu");
+  checkMenuImg();
+});
+
+window.addEventListener("click", ()=>{
+  if (event.target.tagName !== "UL" && event.target.tagName !== "LI" && event.target.id !== "btn-menu")
+  menu.classList.remove("show-menu");
+  checkMenuImg();
+});
