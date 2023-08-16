@@ -60,6 +60,29 @@ header {
     gap: 40px;
   }
 
+  .header-img {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .user-img {
+    transition: 1s;
+    width: 28px;
+    height: 28px;
+  }
+
+  .user-img:hover {
+    overflow: hidden;
+    cursor: pointer;  
+  }
+
+  header div {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
 nav {}
 
   nav ul {
@@ -88,6 +111,178 @@ nav {}
     overflow: hidden;
     color: #BB945F;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+  }
+
+  .profile {
+    position: absolute;
+    z-index: 101;
+    display: block;
+    width: 80px;
+    height: 115px;
+    background: white;
+    bottom: 0;
+    text-align: center;
+    top: 39px;
+    right: 0;
+  }
+
+  .profile__line {
+    padding: 0;
+    width: 40px;
+    height: 1px;
+    background: #BB945F;
+    left: 0;
+    right: 0;
+    margin: 0 auto 15px auto;
+  }
+
+  .profile h3 {
+    padding: 0;
+    margin: 5px 0 5px 0;
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  .profile p {
+    padding: 0;
+    margin: 10px 0 0 0;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    transition: 1s;
+  }
+
+  .profile p:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    color: #BB945F;
+  }
+
+  .login {
+    box-sizing: border-box;
+    padding: 20px 25px 20px 25px;
+    margin: 0;
+    position: absolute;
+    background: white;
+    top: 39px;
+    right: 0;
+    z-index: 101;
+    display: block;
+  }
+
+  .login__img {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .login__img:hover {
+    cursor: pointer;
+  }
+
+  .login__title {
+    padding: 0;
+    margin: 0 0 20px 0;
+    color: #000;
+    text-align: center;
+    font-family: Forum;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .login__data {
+    padding: 0;
+    margin: 0;
+    display: block;
+  }
+
+  .login__data label {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .login__data input {
+    box-sizing: border-box;
+    height: 20px;
+    margin: 10px 0 10px 0;
+    border: 1px solid #BB945F;
+    background: #FFF;
+  }
+
+  .login__btn {
+    margin-top: 10px;
+    border-radius: 2px;
+    border: 1px solid #0C0C0E;
+    width: 75px;
+    height: 30px;
+    background: none;
+    color: #0C0C0E;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    transition: 1s;
+  }
+
+  .login__btn:hover {
+    cursor: pointer;
+    background: #BB945F;
+    border-color: #BB945F;
+    cursor: pointer;
+  }
+
+  .login__footer {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .login__footer p {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .login__footer span {
+    padding: 0;
+    margin: 0;
+    color: #0C0C0E;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-decoration-line: underline;
   }
 
 section{}
