@@ -35,3 +35,34 @@ window.addEventListener("click", ()=>{
   menu.classList.remove("show-menu");
   checkMenuImg();
 });
+
+//-----------------------------------------favorites--------------------------------------
+
+let radioWinter = document.getElementById("winter");
+let radioSpring = document.getElementById("spring");
+let radioSummer = document.getElementById("summer");
+let radioAutumn = document.getElementById("autumn");
+let books = document.getElementsByClassName("favorites__books_box");
+
+function showBook(name) {
+  for (let i = 0; i < books.length; i++) {
+    if (books[i].dataset.book !== name) {
+      books[i].classList.add("slow-unvisible")
+      setTimeout(() => {books[i].classList.add("unvisible");}, 990) 
+    }
+    else {
+      books[i].classList.add("slow-visible");
+      setTimeout(() => {
+        books[i].classList.remove("slow-unvisible")
+        books[i].classList.remove("unvisible");
+      }, 980);
+    }
+  }
+}
+
+radioWinter.addEventListener("click", () => { if (radioWinter.checked) showBook(radioWinter.id); })
+radioSpring.addEventListener("click", () => { if (radioSpring.checked) showBook(radioSpring.id); })
+radioSummer.addEventListener("click", () => { if (radioSummer.checked) showBook(radioSummer.id); })
+radioAutumn.addEventListener("click", () => { if (radioAutumn.checked) showBook(radioAutumn.id); })
+
+
