@@ -204,6 +204,7 @@ section{}
   display: block;
   background: none;
   border: none;
+  padding: 5px;
   height: 26px;
   display: flex;
   justify-content: center;
