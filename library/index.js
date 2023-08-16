@@ -44,29 +44,32 @@ let profilDrop = document.getElementById("profile1");
 let registerWindow = document.getElementById("register");
 let btnCloseRegister = document.getElementById("register-close");
 
+let loginWindow = document.getElementById("login");
+let btnCloseLogin = document.getElementById("login-close");
+
 btnLogin.addEventListener("click", () => {
   if (document.body.getBoundingClientRect().width > 768) profilDrop.classList.toggle("unvisible");
-  if (document.body.getBoundingClientRect().width <= 768) registerWindow.classList.toggle("unvisible");
+  if (document.body.getBoundingClientRect().width <= 768) loginWindow.classList.toggle("unvisible");
 });
 
 window.addEventListener("click", () => {
   if (event.target.classList.value !== "user-img" && event.target.closest("#profile1") === null) profilDrop.classList.add("unvisible");
-  if (event.target.classList.value !== "user-img" && event.target.closest("#register") === null) registerWindow.classList.add("unvisible");
+  if (event.target.classList.value !== "user-img" && event.target.closest("#login") === null) loginWindow.classList.add("unvisible");
 });
 
 window.addEventListener("resize", () => {
   if (document.body.getBoundingClientRect().width <= 768 && profilDrop.classList.value === "profile") {
     profilDrop.classList.add("unvisible");
-    registerWindow.classList.remove("unvisible");
+    loginWindow.classList.remove("unvisible");
   }
-  if (document.body.getBoundingClientRect().width > 768 && registerWindow.classList.value === "login") {
+  if (document.body.getBoundingClientRect().width > 768 && loginWindow.classList.value === "login") {
     profilDrop.classList.remove("unvisible");
-    registerWindow.classList.add("unvisible");
+    loginWindow.classList.add("unvisible");
   }
 });
 
-btnCloseRegister.addEventListener("click", () => {
-  registerWindow.classList.add("unvisible");
+btnCloseLogin.addEventListener("click", () => {
+  loginWindow.classList.add("unvisible");
 });
 
 //-------------------------------------------about----------------------------------------
