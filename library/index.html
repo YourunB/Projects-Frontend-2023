@@ -28,7 +28,55 @@
               <li><a href="#library">Library Card</a></li>
             </ul>
           </nav>
-          <img src="assets/svg/icon-user.svg" alt="icon-user" title="sign in">
+          <div class="header-img">
+            <img class="user-img" src="assets/svg/icon-user.svg" alt="icon-user" title="sign in">
+
+            <div id="profile1" class="profile unvisible">
+              <h3 class="profile__title">Profile</h3>
+              <div class="profile__line"></div>
+              <p class="profile__content">Log In</p>
+              <p class="profile__content">Register</p>
+            </div>
+
+            <div id="login" class="login unvisible">
+              <img id="login-close" class="login__img" src="assets/svg/login-close.svg" title="close window" alt="close">
+              <h3 class="login__title">Login</h3>
+              <div class="login__data">
+                <label for="login-mail">E-mail or readers card</label>
+                <input id="login-mail" type="text">
+              </div>
+              <div class="login__data">
+                <label for="login-pass">Password</label>
+                <input id="login-pass" type="password">
+              </div>
+              <button class="login__btn">Log In</button>
+              <div class="login__footer"><p>Don’t have an account?</p><span id="login-reg">Register</span></div>
+            </div>
+
+            <div id="register" class="login unvisible">
+              <img id="register-close" class="login__img" src="assets/svg/login-close.svg" title="close window" alt="close">
+              <h3 class="login__title">Register</h3>
+              <div class="login__data">
+                <label for="register-first-name">First name</label>
+                <input id="register-first-name" type="text">
+              </div>
+              <div class="login__data">
+                <label for="register-last-name">Last name</label>
+                <input id="register-last-name" type="text">
+              </div>
+              <div class="login__data">
+                <label for="register-mail">E-mail</label>
+                <input id="register-mail" type="text">
+              </div>
+              <div class="login__data">
+                <label for="register-pass">Password</label>
+                <input id="register-pass" type="password">
+              </div>
+              <button class="login__btn">Log In</button>
+              <div class="login__footer"><p>Already have an account?</p><span id="register-login">Login</span></div>
+            </div>
+
+          </div>
           <div class="burger-menu"><img id="btn-menu" src="assets/svg/burger-menu-open.svg" alt="menu" title="open menu"></div>
         </div>
 
@@ -136,7 +184,7 @@
                 <h3>The Last Queen<br><span>By Clive Irving</span></h3>
                 <div class="favorites__books_box_discription">A timely and revelatory new biography of Queen Elizabeth (and her family) exploring how the Windsors have evolved and thrived as the modern world has changed around them.</div>
                 <img src="assets/img/Favorites_book_queen.png" alt="picture of the book">
-                <button class="favorites__books_box_btn-buy" disabled>Own</button>
+                <button class="favorites__books_box_btn-buy">Buy</button>
               </div>
             </div>
             
