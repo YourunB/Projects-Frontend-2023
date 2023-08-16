@@ -38,11 +38,80 @@ window.addEventListener("click", ()=>{
 
 //-------------------------------------------abput----------------------------------------
 
-let btnAbout = document.getElementsByClassName("btn-about")
+let btnAbout = document.getElementsByClassName("btn-about");
+let btnArrow = document.getElementsByClassName("arrow");
+
+function disBtn(position) {
+  for (let i = 0; i < btnAbout.length; i++) {btnAbout[i].disabled = false;}
+
+  if (slidePos === 0) {
+    btnArrow[0].disabled = true;
+    btnAbout[0].disabled = true;
+  }
+  else btnArrow[0].disabled = false;
+
+  if (slidePos === -475) btnAbout[1].disabled = true;
+  if (slidePos === -950) btnAbout[2].disabled = true;
+  if (slidePos === -1425) btnAbout[3].disabled = true;
+
+  if (slidePos === -1900) {
+    btnArrow[1].disabled = true;
+    btnAbout[4].disabled = true;
+  }
+  else btnArrow[1].disabled = false;
+}
+
+let slidePos = 0;
 btnAbout[0].addEventListener("click", () => {
-  alert("sss")
+  slidePos = 0;
+  document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+  disBtn(slidePos);
+});
+btnAbout[1].addEventListener("click", () => {
+  slidePos = -475;
+  document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+  disBtn(slidePos);
+});
+btnAbout[2].addEventListener("click", () => {
+  slidePos = -950;
+  document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+  disBtn(slidePos);
+});
+btnAbout[3].addEventListener("click", () => {
+  slidePos = -1425;
+  document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+  disBtn(slidePos);
+});
+btnAbout[4].addEventListener("click", () => {
+  slidePos = -1900;
+  document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+  disBtn(slidePos);
 });
 
+btnArrow[0].addEventListener("click", () => {
+  slidePos = slidePos + 475;
+  document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+  disBtn(slidePos);
+});
+
+btnArrow[1].addEventListener("click", () => {
+  slidePos = -475 + slidePos;
+  document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+  disBtn(slidePos);
+});
+
+window.addEventListener("resize", function(event) {
+  if (this.document.body.getBoundingClientRect().width <= 1439 && this.document.body.getBoundingClientRect().width >= 1024 && slidePos <= -1425) {
+    slidePos = -1425;
+    document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+    disBtn(slidePos);
+  }
+  if (this.document.body.getBoundingClientRect().width >= 1440 && slidePos <= -1425) {
+    slidePos = -950;
+    document.getElementsByClassName("about__images_image")[0].style.transform = "translate("+ slidePos +"px,0)";
+    disBtn(slidePos);
+  }
+});
 
 //-----------------------------------------favorites--------------------------------------
 
