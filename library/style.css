@@ -324,11 +324,15 @@ section{}
 }
 
 .favorites__books {
+
+} 
+
+.favorites__books_container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   row-gap: 40px;
-} 
+}
 
 .favorites__books_box {
   width: calc(550px - 2px - 20px);
@@ -858,7 +862,7 @@ footer {
 }
 
 @media (max-width: 1230px){
-  .favorites__books {justify-content: center;} 
+  .favorites__books_container {justify-content: center;} 
 }
 
 @media (max-width: 1024px) {
@@ -959,6 +963,13 @@ footer {
     grid-template-columns: 1fr 2fr 1fr;
     gap: 5px;
     justify-items: flex-start;
+  }
+
+  .favorites__pick {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    background: white;
   }
 }
 
