@@ -393,6 +393,7 @@ section{}
 .about__images_button {
   display: flex;
   justify-content: center;
+  gap: 10px;
 }
 
 .btn-about {
@@ -400,20 +401,33 @@ section{}
   background: none;
   border: none;
   padding: 5px;
-  height: 26px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 35px;
-  transition: 1s;
-}
-
-.btn-about a {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 5px;
+  transition: 1s;
   background: #0C0C0E;
+  z-index: 20;
+  position: relative;
+}
+
+.btn-about::before {
+  position: absolute;
+  content: '';
+  top: -5px;
+  right: -5px;
+  left: -5px;
+  bottom: -5px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.btn-about:disabled:before {
+  cursor: default;
 }
 
 .btn-about:nth-child(4) {display: none;}
@@ -422,7 +436,6 @@ section{}
   .btn-about:hover {
     cursor: pointer;
     transform: scale(1.2);
-    transition: 1s;
     overflow: hidden;
   }
 
@@ -430,7 +443,7 @@ section{}
     cursor:default;
     transform: scale(1);
   }
-  .btn-about:disabled a {
+  .btn-about:disabled {
     cursor:default;
     background: #BB945F;
   }
@@ -710,7 +723,6 @@ section{}
 
 .coffee__menu_coffee {text-align: left;}
 .coffee__menu_desert {
-  margin-top: 38px;
   text-align: right;}
 
 .contacts {}
@@ -1185,6 +1197,7 @@ footer {
     position: relative;
     margin-left: auto; 
     margin-right: 0;
+    margin-top: 38px;
   }
 }
 
@@ -1194,7 +1207,7 @@ footer {
   }
 
   .btn-about {
-    margin-top: 20px;
+    margin-top: 25px;
   }
   
   .footer-year {
