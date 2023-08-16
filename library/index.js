@@ -36,7 +36,40 @@ window.addEventListener("click", ()=>{
   checkMenuImg();
 });
 
-//-------------------------------------------abput----------------------------------------
+//-----------------------------------------header-----------------------------------------
+
+let btnLogin = document.getElementsByClassName("user-img")[0];
+let profilDrop = document.getElementById("profile1");
+
+let registerWindow = document.getElementById("register");
+let btnCloseRegister = document.getElementById("register-close");
+
+btnLogin.addEventListener("click", () => {
+  if (document.body.getBoundingClientRect().width > 768) profilDrop.classList.toggle("unvisible");
+  if (document.body.getBoundingClientRect().width <= 768) registerWindow.classList.toggle("unvisible");
+});
+
+window.addEventListener("click", () => {
+  if (event.target.classList.value !== "user-img" && event.target.closest("#profile1") === null) profilDrop.classList.add("unvisible");
+  if (event.target.classList.value !== "user-img" && event.target.closest("#register") === null) registerWindow.classList.add("unvisible");
+});
+
+window.addEventListener("resize", () => {
+  if (document.body.getBoundingClientRect().width <= 768 && profilDrop.classList.value === "profile") {
+    profilDrop.classList.add("unvisible");
+    registerWindow.classList.remove("unvisible");
+  }
+  if (document.body.getBoundingClientRect().width > 768 && registerWindow.classList.value === "login") {
+    profilDrop.classList.remove("unvisible");
+    registerWindow.classList.add("unvisible");
+  }
+});
+
+btnCloseRegister.addEventListener("click", () => {
+  registerWindow.classList.add("unvisible");
+});
+
+//-------------------------------------------about----------------------------------------
 
 let btnAbout = document.getElementsByClassName("btn-about");
 let btnArrow = document.getElementsByClassName("arrow");
@@ -148,3 +181,11 @@ radioWinter.addEventListener("click", () => { if (radioWinter.checked) showBook(
 radioSpring.addEventListener("click", () => { if (radioSpring.checked) showBook(radioSpring.id); })
 radioSummer.addEventListener("click", () => { if (radioSummer.checked) showBook(radioSummer.id); })
 radioAutumn.addEventListener("click", () => { if (radioAutumn.checked) showBook(radioAutumn.id); })
+
+//--------------------------------------Digital Library Cards--------------------------------------
+
+let btnCheckCard = document.getElementById("btnCheckCard");
+
+btnCheckCard.addEventListener("click", () =>{
+  preventDefault();
+});
