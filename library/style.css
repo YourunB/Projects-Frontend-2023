@@ -803,7 +803,10 @@ footer {
 }
 
 .visible {display: block;}
+.slow-visible {animation: show 1s ease-in-out;}
+
 .unvisible {display: none;}
+.slow-unvisible {animation: hide 1s ease-in-out;}
 
 .show-menu {
   -webkit-transition: all .3s ease-in-out;
@@ -823,6 +826,24 @@ footer {
   height: 34px;
   width: 45px;
   display: none;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 1400px) {
