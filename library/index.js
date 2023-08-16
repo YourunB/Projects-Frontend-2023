@@ -36,27 +36,42 @@ window.addEventListener("click", ()=>{
   checkMenuImg();
 });
 
+//-------------------------------------------abput----------------------------------------
+
+let btnAbout = document.getElementsByClassName("btn-about")
+btnAbout[0].addEventListener("click", () => {
+  alert("sss")
+});
+
+
 //-----------------------------------------favorites--------------------------------------
 
 let radioWinter = document.getElementById("winter");
 let radioSpring = document.getElementById("spring");
 let radioSummer = document.getElementById("summer");
 let radioAutumn = document.getElementById("autumn");
-let books = document.getElementsByClassName("favorites__books_box");
+let books = document.getElementsByClassName("favorites__books_container");
 
+let timerId = [];
 function showBook(name) {
   for (let i = 0; i < books.length; i++) {
     if (books[i].dataset.book !== name) {
-      books[i].classList.add("slow-unvisible")
-      setTimeout(() => {books[i].classList.add("unvisible");}, 990) 
+      books[i].classList.add("slow-unvisible");
+      timerId[i] = setTimeout(() => {books[i].classList.add("unvisible");}, 990); 
     }
     else {
       books[i].classList.add("slow-visible");
-      setTimeout(() => {
-        books[i].classList.remove("slow-unvisible")
+      timerId[i] = setTimeout(() => {
+        books[i].classList.remove("slow-unvisible");
         books[i].classList.remove("unvisible");
       }, 980);
     }
+  }
+}
+
+function resetAnime() {
+  for (let i = 0; i < timerId.length; i++) {
+    clearTimeout(timerId[i]);
   }
 }
 
@@ -64,5 +79,3 @@ radioWinter.addEventListener("click", () => { if (radioWinter.checked) showBook(
 radioSpring.addEventListener("click", () => { if (radioSpring.checked) showBook(radioSpring.id); })
 radioSummer.addEventListener("click", () => { if (radioSummer.checked) showBook(radioSummer.id); })
 radioAutumn.addEventListener("click", () => { if (radioAutumn.checked) showBook(radioAutumn.id); })
-
-
