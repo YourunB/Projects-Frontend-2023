@@ -13,6 +13,46 @@
 </head>
 <body>
 
+  <div class="overlay unvisible"></div>
+
+  <form id="register" class="login register-size unvisible">
+    <img id="register-close" class="login__img" src="assets/svg/login-close.svg" title="close window" alt="close">
+    <h3 class="login__title">Register</h3>
+    <div class="login__data">
+      <label for="register-first-name">First name</label>
+      <input id="register-first-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a name from letters on English">
+    </div>
+    <div class="login__data">
+      <label for="register-last-name">Last name</label>
+      <input id="register-last-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a name from letters on English">
+    </div>
+    <div class="login__data">
+      <label for="register-mail">E-mail</label>
+      <input id="register-mail" type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required title="Enter email (example name@.gmail.com)">
+    </div>
+    <div class="login__data">
+      <label for="register-pass">Password</label>
+      <input id="register-pass" type="password" pattern=".{8,20}" required title="Password must be 8 characters or more">
+    </div>
+    <button id="register-btn-save" class="login__btn">Sign Up</button>
+    <div class="login__footer"><p>Already have an account?</p><span id="register-login">Login</span></div>
+  </form>
+
+  <form id="login" class="login login-size unvisible">
+    <img id="login-close" class="login__img" src="assets/svg/login-close.svg" title="close window" alt="close">
+    <h3 class="login__title">Login</h3>
+    <div class="login__data">
+      <label for="login-mail">E-mail or readers card</label>
+      <input id="login-mail" type="text" required title="Enter email or readers card">
+    </div>
+    <div class="login__data">
+      <label for="login-pass">Password</label>
+      <input id="login-pass" type="password" pattern=".{8,20}" required title="Password must be 8 characters or more">
+    </div>
+    <button class="login__btn" id="log-in">Log In</button>
+    <div class="login__footer"><p>Don’t have an account?</p><span id="login-reg">Register</span></div>
+  </form>
+
   <div class="wrapper">
 
       <header>
@@ -34,46 +74,8 @@
             <div id="profile1" class="profile unvisible">
               <h3 class="profile__title">Profile</h3>
               <div class="profile__line"></div>
-              <p class="profile__content">Log In</p>
-              <p class="profile__content">Register</p>
-            </div>
-
-            <div id="login" class="login unvisible">
-              <img id="login-close" class="login__img" src="assets/svg/login-close.svg" title="close window" alt="close">
-              <h3 class="login__title">Login</h3>
-              <div class="login__data">
-                <label for="login-mail">E-mail or readers card</label>
-                <input id="login-mail" type="text">
-              </div>
-              <div class="login__data">
-                <label for="login-pass">Password</label>
-                <input id="login-pass" type="password">
-              </div>
-              <button class="login__btn">Log In</button>
-              <div class="login__footer"><p>Don’t have an account?</p><span id="login-reg">Register</span></div>
-            </div>
-
-            <div id="register" class="login unvisible">
-              <img id="register-close" class="login__img" src="assets/svg/login-close.svg" title="close window" alt="close">
-              <h3 class="login__title">Register</h3>
-              <div class="login__data">
-                <label for="register-first-name">First name</label>
-                <input id="register-first-name" type="text">
-              </div>
-              <div class="login__data">
-                <label for="register-last-name">Last name</label>
-                <input id="register-last-name" type="text">
-              </div>
-              <div class="login__data">
-                <label for="register-mail">E-mail</label>
-                <input id="register-mail" type="text">
-              </div>
-              <div class="login__data">
-                <label for="register-pass">Password</label>
-                <input id="register-pass" type="password">
-              </div>
-              <button class="login__btn">Log In</button>
-              <div class="login__footer"><p>Already have an account?</p><span id="register-login">Login</span></div>
+              <p id="profil-log" class="profile__content">Log In</p>
+              <p id="profile-reg" class="profile__content">Register</p>
             </div>
 
           </div>
