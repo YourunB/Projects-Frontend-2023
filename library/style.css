@@ -75,6 +75,29 @@ header {
   .user-img:hover {
     overflow: hidden;
     cursor: pointer;  
+    transform: scale(1.05);
+  }
+
+  .user-login {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: white;
+    color: #BB945F;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    transition: 1s;
+  }
+
+  .user-login:hover {
+    overflow: hidden;
+    cursor: pointer;
+    transform: scale(1.05);
   }
 
   header div {
@@ -1124,6 +1147,10 @@ footer {
 }
 
 @media (max-width: 1024px) {
+  .profile {
+    top: 31px;
+  }
+
   .about__images {
     max-width: 450px;
     left: 0;
