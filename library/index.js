@@ -37,6 +37,11 @@ window.addEventListener("click", ()=>{
 });
 
 //-----------------------------------------header-----------------------------------------
+let pageLogin = false;
+let pageUser = "";
+let pageUserName = "";
+
+
 let overlay = document.getElementsByClassName("overlay")[0];
 
 
@@ -85,7 +90,19 @@ btnRegisterSave.addEventListener("click", () => {
     alert("The string must not be empty");
     return;
   }
-  
+
+  let storedUser = JSON.parse(localStorage.getItem("userData"));
+  if (storedUser !== null) {
+    for (let i = 0; i < storedUser.length; i++) {
+      for (let key in storedUser[i]) {
+        if (storedUser[i][key] === inputRegMail.value) {
+          alert("User with this email is already registered");
+          return
+        }
+      }
+    }
+  }
+
   let cardNumber = randomNumber();
   let user = {
     nameFirst: inputRegFirstName.value,
@@ -95,7 +112,14 @@ btnRegisterSave.addEventListener("click", () => {
     card: cardNumber,
   }
 
-  localStorage.setItem("userData", JSON.stringify(user));
+  if (storedUser !== null) { 
+    storedUser.push(user);
+  } else {
+    storedUser = [];
+    storedUser.push(user);
+  }
+
+  localStorage.setItem("userData", JSON.stringify(storedUser));
   clearInput();
 });
 
@@ -131,8 +155,35 @@ btnLogIn.addEventListener("click", () => {
     alert("The string must not be empty");
     return;
   }
+
+  let storedUser = JSON.parse(localStorage.getItem("userData"));
+  if (storedUser !== null) {
+    for (let i = 0; i < storedUser.length; i++) {
+      for (let key in storedUser[i]) {
+        if (storedUser[i][key] === inputLoginMail.value) {
+          let user = i;
+          for (let key2 in storedUser[user]) {
+            if (storedUser[user][key2] === inputLoginPass.value) {
+
+              pageLogin = true;
+              pageUser = storedUser[user].nameFirst.slice(0,1).toUpperCase() + storedUser[user].nameLast.slice(0,1).toUpperCase();
+              pageUserName = storedUser[user].nameFirst + " " + storedUser[user].nameLast;
+
+              checkLogin();
+
+              overlay.classList.add("unvisible");
+              loginWindow.classList.add("unvisible");
+              clearInput();
+              alert("Hello " + storedUser[user].nameFirst + " !");
+              return
+            }
+          }
+        }
+      }
+    }
+  }
   
-  clearInput();
+  alert("The user does not exist or the password is incorrect");
 });
 
 //------------------------end login-window------------------------
@@ -146,7 +197,7 @@ function randomNumber(min = 10000000000, max = 99999999999) {
   min = Math.ceil(min);
   max = Math.floor(max);
   let res = Math.floor(Math.random() * (max - min + 1)) + min;
-  return res.toString(16).slice(0,9);
+  return res.toString(16).slice(0,9).toUpperCase();
 }
 
 btnCloseRegister.addEventListener("click", () => {
@@ -156,10 +207,6 @@ btnCloseRegister.addEventListener("click", () => {
 });
 
 btnLogin.addEventListener("click", () => { profilDrop.classList.toggle("unvisible"); });
-
-window.addEventListener("click", () => {
-  if (event.target.classList.value !== "user-img" && event.target.closest("#profile1") === null) profilDrop.classList.add("unvisible");
-});
 
 btnCloseLogin.addEventListener("click", () => {
   loginWindow.classList.add("unvisible");
@@ -311,3 +358,36 @@ let btnCheckCard = document.getElementById("btnCheckCard");
 btnCheckCard.addEventListener("click", () =>{
   preventDefault();
 });
+
+//------------------------------------------------all page ------------------------------------------
+
+//profile2
+let profile2 = document.getElementById("profile2");
+let btnMyProfile = document.getElementById("profile2-my-profyle");
+let btnProfileLogOut = document.getElementById("profile2-log-out");
+
+//icon-login
+let btnUser = document.getElementById("user-login");
+
+btnUser.addEventListener("click", () => { profile2.classList.remove("unvisible"); }); //open profile2
+
+//close area click profile1 and profile2
+window.addEventListener("click", () => {
+  if (event.target.classList.value !== "user-img" && event.target.closest("#profile1") === null) profilDrop.classList.add("unvisible");
+  if (event.target.classList.value !== "user-login" && event.target.closest("#profile2") === null) profile2.classList.add("unvisible");
+});
+
+//check logIn or logOut and change page
+function checkLogin() {
+  if (pageLogin === true) {
+    btnLogin.classList.add("unvisible");
+    btnUser.textContent = pageUser;
+    btnUser.classList.remove("unvisible");
+  }
+
+  if (pageLogin === false) {
+    btnLogin.classList.remove("unvisible");
+    btnUser.textContent = "";
+    btnUser.classList.add("unvisible");
+  }
+}
