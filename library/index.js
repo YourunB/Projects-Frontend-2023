@@ -37,39 +37,158 @@ window.addEventListener("click", ()=>{
 });
 
 //-----------------------------------------header-----------------------------------------
+let overlay = document.getElementsByClassName("overlay")[0];
 
+
+//user-ico
 let btnLogin = document.getElementsByClassName("user-img")[0];
 let profilDrop = document.getElementById("profile1");
+let btnProfileReg = document.getElementById("profile-reg");
+let btnProfileLog = document.getElementById("profil-log"); 
 
-let registerWindow = document.getElementById("register");
-let btnCloseRegister = document.getElementById("register-close");
 
+//login window
 let loginWindow = document.getElementById("login");
 let btnCloseLogin = document.getElementById("login-close");
+let btnLoginRegOpen = document.getElementById("login-reg");
+let btnLogIn = document.getElementById("log-in");
+let inputLoginMail = document.getElementById("login-mail");
+let inputLoginPass = document.getElementById("login-pass");
 
-btnLogin.addEventListener("click", () => {
-  if (document.body.getBoundingClientRect().width > 768) profilDrop.classList.toggle("unvisible");
-  if (document.body.getBoundingClientRect().width <= 768) loginWindow.classList.toggle("unvisible");
+
+let btnSignUp = document.getElementById("btnSignUp"); //btn from Digital Library Cards
+
+
+//reg window
+let registerWindow = document.getElementById("register");
+let btnCloseRegister = document.getElementById("register-close");
+let btnRegisterSave = document.getElementById("register-btn-save");
+let btnRegGoToLogin = document.getElementById("register-login");
+let inputRegFirstName = document.getElementById("register-first-name");
+let inputRegLastName = document.getElementById("register-last-name");
+let inputRegMail = document.getElementById("register-mail");
+let inputRegPass = document.getElementById("register-pass");
+
+//------------------------Register-window-----------------------
+
+btnRegisterSave.addEventListener("click", () => {
+  event.preventDefault();
+  if (inputRegFirstName.value.length === 0 || inputRegFirstName.value.length === 0 || inputRegLastName.value.length === 0 || inputRegMail.value.length === 0 || inputRegPass.value.length === 0) {
+    alert("Fill in all the fields");
+    return;
+  }
+  if (inputRegPass.value.length > 0 && inputRegPass.value.length < 8) {
+    alert("Password must be 8 characters or more");
+    return
+  }
+  if (!inputRegFirstName.value.trim() || !inputRegLastName.value.trim() || !inputRegMail.value.trim() || !inputRegPass.value.trim()) {
+    alert("The string must not be empty");
+    return;
+  }
+  
+  let cardNumber = randomNumber();
+  let user = {
+    nameFirst: inputRegFirstName.value,
+    nameLast: inputRegLastName.value,
+    mail: inputRegMail.value,
+    pass: inputRegPass.value,
+    card: cardNumber,
+  }
+
+  localStorage.setItem("userData", JSON.stringify(user));
+  clearInput();
 });
+
+btnRegGoToLogin.addEventListener("click", () => {
+  registerWindow.classList.add("unvisible");
+  loginWindow.classList.remove("unvisible");
+  overlay.classList.remove("unvisible");
+  clearInput();
+});
+
+//------------------------end register window---------------------
+
+//---------------------------login-window-------------------------
+
+btnLoginRegOpen.addEventListener("click", () => {
+  registerWindow.classList.remove("unvisible");
+  overlay.classList.remove("unvisible");
+  loginWindow.classList.add("unvisible");
+  clearInput();
+});
+
+btnLogIn.addEventListener("click", () => {
+  event.preventDefault();
+  if (inputLoginMail.value.length === 0 || inputLoginPass.value.length === 0) {
+    alert("Fill in all the fields");
+    return;
+  }
+  if (inputLoginPass.value.length > 0 && inputLoginPass.value.length < 8) {
+    alert("Password must be 8 characters or more");
+    return
+  }
+  if (!inputLoginMail.value.trim() || !inputLoginPass.value.trim()) {
+    alert("The string must not be empty");
+    return;
+  }
+  
+  clearInput();
+});
+
+//------------------------end login-window------------------------
+
+function clearInput() {
+  for (let i = 0; i < registerWindow.getElementsByTagName("input").length; i++) {registerWindow.getElementsByTagName("input")[i].value = "";}
+  for (let i = 0; i < loginWindow.getElementsByTagName("input").length; i++) {loginWindow.getElementsByTagName("input")[i].value = "";}
+}
+
+function randomNumber(min = 10000000000, max = 99999999999) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  let res = Math.floor(Math.random() * (max - min + 1)) + min;
+  return res.toString(16).slice(0,9);
+}
+
+btnCloseRegister.addEventListener("click", () => {
+  registerWindow.classList.add("unvisible");
+  overlay.classList.add("unvisible");
+  clearInput();
+});
+
+btnLogin.addEventListener("click", () => { profilDrop.classList.toggle("unvisible"); });
 
 window.addEventListener("click", () => {
   if (event.target.classList.value !== "user-img" && event.target.closest("#profile1") === null) profilDrop.classList.add("unvisible");
-  if (event.target.classList.value !== "user-img" && event.target.closest("#login") === null) loginWindow.classList.add("unvisible");
-});
-
-window.addEventListener("resize", () => {
-  if (document.body.getBoundingClientRect().width <= 768 && profilDrop.classList.value === "profile") {
-    profilDrop.classList.add("unvisible");
-    loginWindow.classList.remove("unvisible");
-  }
-  if (document.body.getBoundingClientRect().width > 768 && loginWindow.classList.value === "login") {
-    profilDrop.classList.remove("unvisible");
-    loginWindow.classList.add("unvisible");
-  }
 });
 
 btnCloseLogin.addEventListener("click", () => {
   loginWindow.classList.add("unvisible");
+  overlay.classList.add("unvisible");
+  clearInput();
+});
+
+btnSignUp.addEventListener("click", () => {
+  registerWindow.classList.remove("unvisible");
+  overlay.classList.remove("unvisible");
+});
+
+btnProfileReg.addEventListener("click", () => {
+  registerWindow.classList.remove("unvisible");
+  overlay.classList.remove("unvisible");
+  profilDrop.classList.add("unvisible");
+});
+
+btnProfileLog.addEventListener("click", () => {
+  loginWindow.classList.remove("unvisible");
+  overlay.classList.remove("unvisible");
+  profilDrop.classList.add("unvisible");
+});
+
+overlay.addEventListener("click", () => {
+  registerWindow.classList.add("unvisible");
+  loginWindow.classList.add("unvisible");
+  overlay.classList.add("unvisible");
+  clearInput();
 });
 
 //-------------------------------------------about----------------------------------------
