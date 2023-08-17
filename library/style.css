@@ -172,9 +172,13 @@ nav {}
     margin: 0;
     position: absolute;
     background: white;
-    top: 39px;
-    right: 0;
-    z-index: 101;
+    box-sizing: border-box;
+    background: white;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1101;
     display: block;
   }
 
@@ -284,6 +288,31 @@ nav {}
     letter-spacing: 1px;
     text-decoration-line: underline;
   }
+
+  .login__footer span:hover {cursor: pointer;}
+
+  .register-size {
+    width: 250px;
+    height: 382px;
+  }
+
+  .login-size {
+    width: 250px;
+    height: 262px;
+  }
+
+  .overlay {
+    position: fixed;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1100;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .overflow {overflow: hidden;}
 
 section{}
 
