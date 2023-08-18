@@ -40,6 +40,7 @@ window.addEventListener("click", ()=>{
 let pageLogin = false;
 let pageUser = "";
 let pageUserName = "";
+let pageAutoriztion = "";
 
 
 let overlay = document.getElementsByClassName("overlay")[0];
@@ -74,6 +75,20 @@ let inputRegLastName = document.getElementById("register-last-name");
 let inputRegMail = document.getElementById("register-mail");
 let inputRegPass = document.getElementById("register-pass");
 
+
+//profile2
+let profile2 = document.getElementById("profile2");
+let btnMyProfile = document.getElementById("profile2-my-profyle");
+let btnProfileLogOut = document.getElementById("profile2-log-out");
+let profile2Number = document.getElementById("profile2-number");
+
+//icon-login
+let btnUser = document.getElementById("user-login");
+
+//modal my profile window
+let windowMyProfile = document.getElementById("my-profile-window");
+let btnCloseProfileWindow = document.getElementById("close-profile-window");
+
 //------------------------Register-window-----------------------
 
 btnRegisterSave.addEventListener("click", () => {
@@ -82,7 +97,7 @@ btnRegisterSave.addEventListener("click", () => {
   if (inputRegFirstName.value.length === 0 || inputRegLastName.value.length === 0 || inputRegMail.value.length === 0 || inputRegPass.value.length === 0) {
     alert("Fill in all the fields");
     return;
-  }
+  }//проверка на валидацию из html
   if (inputRegFirstName.validity.valid === false || inputRegLastName.validity.valid === false || inputRegMail.validity.valid === false || inputRegPass.validity.valid === false) {
     alert("Enter the correct data");
     return;
@@ -115,6 +130,7 @@ btnRegisterSave.addEventListener("click", () => {
     mail: inputRegMail.value,
     pass: inputRegPass.value,
     card: cardNumber,
+    autorization: 1,
   }
 
   if (storedUser !== null) { 
@@ -125,6 +141,9 @@ btnRegisterSave.addEventListener("click", () => {
   }
 
   localStorage.setItem("userData", JSON.stringify(storedUser));
+
+  registerWindow.classList.add("unvisible");
+  overlay.classList.add("unvisible");
   clearInput();
 });
 
@@ -174,9 +193,13 @@ btnLogIn.addEventListener("click", () => {
           for (let key2 in storedUser[user]) {
             if (storedUser[user][key2] === inputLoginPass.value) {
 
+              storedUser[user].autorization = storedUser[user].autorization + 1;
+              
               pageLogin = true;
               pageUser = storedUser[user].nameFirst.slice(0,1).toUpperCase() + storedUser[user].nameLast.slice(0,1).toUpperCase();
               pageUserName = storedUser[user].nameFirst + " " + storedUser[user].nameLast;
+              btnUser.title = pageUserName;
+              profile2Number.textContent = storedUser[user].card;
 
               checkLogin();
 
@@ -184,6 +207,7 @@ btnLogIn.addEventListener("click", () => {
               loginWindow.classList.add("unvisible");
               clearInput();
               alert("Hello " + storedUser[user].nameFirst + " !");
+              localStorage.setItem("userData", JSON.stringify(storedUser));
               return
             }
           }
@@ -240,11 +264,29 @@ btnProfileLog.addEventListener("click", () => {
   profilDrop.classList.add("unvisible");
 });
 
+btnProfileLogOut.addEventListener("click", () => {
+  profile2.classList.add("unvisible");
+  pageLogin = false;
+  checkLogin();
+});
+
 overlay.addEventListener("click", () => {
   registerWindow.classList.add("unvisible");
   loginWindow.classList.add("unvisible");
+  windowMyProfile.classList.add("unvisible");
   overlay.classList.add("unvisible");
   clearInput();
+});
+
+//modal profile window
+btnMyProfile.addEventListener("click", () => {
+  windowMyProfile.classList.remove("unvisible");
+  overlay.classList.remove("unvisible");
+});
+
+btnCloseProfileWindow.addEventListener("click", () => {
+  windowMyProfile.classList.add("unvisible");
+  overlay.classList.add("unvisible");
 });
 
 //-------------------------------------------about----------------------------------------
@@ -332,6 +374,17 @@ let radioSummer = document.getElementById("summer");
 let radioAutumn = document.getElementById("autumn");
 let books = document.getElementsByClassName("favorites__books_container");
 
+let buttonsFavoritesBuy = document.getElementsByClassName("favorites__books_box_btn-buy");
+
+for (let i = 0; i < buttonsFavoritesBuy.length; i++) {
+  buttonsFavoritesBuy[i].addEventListener("click", () => {
+    if (pageLogin === false && buttonsFavoritesBuy[i].textContent === "Buy") {
+      loginWindow.classList.remove("unvisible");
+      overlay.classList.remove("unvisible");
+    }
+  });
+}
+
 let timerId = [];
 function showBook(name) {
   for (let i = 0; i < books.length; i++) {
@@ -363,20 +416,18 @@ radioAutumn.addEventListener("click", () => { if (radioAutumn.checked) showBook(
 //--------------------------------------Digital Library Cards--------------------------------------
 
 let btnCheckCard = document.getElementById("btnCheckCard");
+let btnDigitalCardsLogin = document.getElementById("btnLogIn");
 
 btnCheckCard.addEventListener("click", () =>{
-  preventDefault();
+  event.preventDefault();
+});
+
+btnDigitalCardsLogin.addEventListener("click", () => {
+  loginWindow.classList.remove("unvisible");
+  overlay.classList.remove("unvisible");
 });
 
 //------------------------------------------------all page ------------------------------------------
-
-//profile2
-let profile2 = document.getElementById("profile2");
-let btnMyProfile = document.getElementById("profile2-my-profyle");
-let btnProfileLogOut = document.getElementById("profile2-log-out");
-
-//icon-login
-let btnUser = document.getElementById("user-login");
 
 btnUser.addEventListener("click", () => { profile2.classList.remove("unvisible"); }); //open profile2
 
