@@ -77,9 +77,14 @@ let inputRegPass = document.getElementById("register-pass");
 //------------------------Register-window-----------------------
 
 btnRegisterSave.addEventListener("click", () => {
-  event.preventDefault();
-  if (inputRegFirstName.value.length === 0 || inputRegFirstName.value.length === 0 || inputRegLastName.value.length === 0 || inputRegMail.value.length === 0 || inputRegPass.value.length === 0) {
+  //event.preventDefault();
+  console.log(inputRegMail.validity.valid)
+  if (inputRegFirstName.value.length === 0 || inputRegLastName.value.length === 0 || inputRegMail.value.length === 0 || inputRegPass.value.length === 0) {
     alert("Fill in all the fields");
+    return;
+  }
+  if (inputRegFirstName.validity.valid === false || inputRegLastName.validity.valid === false || inputRegMail.validity.valid === false || inputRegPass.validity.valid === false) {
+    alert("Enter the correct data");
     return;
   }
   if (inputRegPass.value.length > 0 && inputRegPass.value.length < 8) {
@@ -142,9 +147,13 @@ btnLoginRegOpen.addEventListener("click", () => {
 });
 
 btnLogIn.addEventListener("click", () => {
-  event.preventDefault();
+  //event.preventDefault();
   if (inputLoginMail.value.length === 0 || inputLoginPass.value.length === 0) {
     alert("Fill in all the fields");
+    return;
+  }
+  if (inputLoginMail.validity.valid === false || inputLoginPass.validity.valid === false) {
+    alert("Enter the correct data");
     return;
   }
   if (inputLoginPass.value.length > 0 && inputLoginPass.value.length < 8) {
