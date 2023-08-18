@@ -53,6 +53,45 @@
     <div class="login__footer"><p>Don’t have an account?</p><span id="login-reg">Register</span></div>
   </form>
 
+  <div class="modal-profile unvisible" id="my-profile-window">
+    <div class="modal-profile__left">
+      <div class="modal-profile__left_container">
+        <div class="modal-profile__left_initials">JD</div>
+        <div class="modal-profile__left_name">John Doe</div>
+      </div>
+    </div>
+
+    <div class="modal-profile__right">
+      <img class="modal-profile__right_btn" src="assets/svg/login-close.svg" alt="Close" title="Close" id="close-profile-window">
+      <h3>My profile</h3>
+      <div class="modal-profile__right-counts">
+        <div class="modal-profile_counts">
+          <p>Visits</p>
+          <img src="assets/svg/visits.svg" alt="User" title="Your visits">
+          <div class="counts">23</div>
+        </div>
+        <div class="modal-profile_counts">
+          <p>Bonuses</p>
+          <img src="assets/svg/bonuses.svg" alt="Bonus" title="Your bonuses">
+          <div class="counts">1240</div>
+        </div>
+        <div class="modal-profile_counts">
+          <p>Books</p>
+          <img src="assets/svg/books.svg" alt="Books" title="Your books">
+          <div class="counts">2</div>
+        </div>
+      </div>
+      <h4>Rented books</h4>
+      <ul class="modal-profile_list">
+        <li>The Last Queen, Clive Irving</li>
+        <li>Dominicana, Angie Cruz</li>
+      </ul>
+      <div class="modal-profile__footer">
+        Card number<span>F00234030</span><img src="assets/svg/copy.svg" alt="Copy" title="Copy">
+      </div>
+    </div>
+  </div>
+
   <div class="wrapper">
 
       <header>
@@ -70,7 +109,7 @@
           </nav>
           <div class="header-img">
             <img class="user-img" src="assets/svg/icon-user.svg" alt="icon-user" title="sign in">
-            <div id="user-login" class="user-login unvisible">FL</div>
+            <div id="user-login" class="user-login unvisible" title="user">FL</div>
 
             <div id="profile1" class="profile unvisible">
               <h3 class="profile__title">Profile</h3>
@@ -80,7 +119,7 @@
             </div>
 
             <div id="profile2" class="profile unvisible">
-              <h3 class="profile__title">Profile</h3>
+              <h3 id="profile2-number" class="profile__title">Profile</h3>
               <div class="profile__line"></div>
               <p id="profile2-my-profyle" class="profile__content">My profile</p>
               <p id="profile2-log-out" class="profile__content">Log Out</p>
