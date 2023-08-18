@@ -84,7 +84,7 @@ header {
     border-radius: 50%;
     background: white;
     color: #BB945F;
-    font-size: 19px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     display: flex;
@@ -140,7 +140,7 @@ nav {}
     position: absolute;
     z-index: 101;
     display: block;
-    width: 80px;
+    min-width: 80px;
     height: 115px;
     background: white;
     bottom: 0;
@@ -322,6 +322,191 @@ nav {}
   .login-size {
     width: 250px;
     height: 262px;
+  }
+
+  .modal-profile {
+    position: absolute;
+    z-index: 1101;
+    width: 600px;
+    min-height: 400px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 170px 430px;
+    background: #FFF;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1101;
+  }
+
+  .modal-profile__right_btn {
+    display: block;
+    position: absolute;
+    right: 23px;
+    top: 23px;
+    transition: 1s;
+  }
+
+  .modal-profile__right_btn:hover {
+    cursor: pointer;
+  }
+
+  .modal-profile__left {
+    background: #0C0C0E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .modal-profile__left_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .modal-profile__left_initials {
+    margin: 0;
+    padding: 0;
+    width: 80px;
+    height: 80px;
+    background: #FFF;
+    color: #BB945F;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-profile__left_name {
+    width: fit-content;
+    padding: 5px 15px;
+    margin: 0;
+    background: #FFF;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+
+  .modal-profile__right {
+    padding: 40px 20px 39px 20px;
+  }
+
+  .modal-profile__right h3 {
+    text-align: left;
+    margin: 0 0 40px 0;
+    color: #000;
+    font-family: Forum;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .modal-profile__right h4 {
+    color: #0C0C0E;
+    text-align: left;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 20px 0 30px 0;
+    padding: 0;
+  }
+
+  .modal-profile__right-counts {
+    height: 81px;
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    gap: 20px;
+  }
+
+  .modal-profile_counts {
+    text-align: center;
+  }
+
+  .modal-profile_counts p {
+    margin: 0 0 10px 0;
+    padding: 0;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+  }
+
+  .modal-profile_counts img {
+    text-align: center;
+    margin: 0 0 6px 0;
+  }
+
+  .counts {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+  }
+
+  .modal-profile_list {
+    margin: 0 0 40px 0;
+    padding: 0 0 0 30px;
+  }
+
+  .modal-profile_list li {
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+  }
+
+  .modal-profile_list li:last-of-type {padding: 0;}
+
+  .modal-profile__footer {
+    color: #0C0C0E;
+    text-align: left;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .modal-profile__footer span {
+    color: #BB945F;
+    padding: 0 16px;
   }
 
   .overlay {
