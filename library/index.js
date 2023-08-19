@@ -539,14 +539,14 @@ function showBook(name) {
   for (let i = 0; i < books.length; i++) {
     if (books[i].dataset.book !== name) {
       books[i].classList.add("slow-unvisible");
-      timerId[i] = setTimeout(() => {books[i].classList.add("unvisible");}, 990); 
+      timerId[i] = setTimeout(() => {books[i].classList.add("unvisible");}, 490); 
     }
     else {
       books[i].classList.add("slow-visible");
       timerId[i] = setTimeout(() => {
         books[i].classList.remove("slow-unvisible");
         books[i].classList.remove("unvisible");
-      }, 980);
+      }, 480);
     }
   }
 }
@@ -591,10 +591,10 @@ btnCheckCard.addEventListener("click", () => {
   if (storedUser !== null) {
     for (let i = 0; i < storedUser.length; i++) {
       for (let key in storedUser[i]) {
-        if (storedUser[i][key].toLowerCase() === inputDigitalCardUserLogout.value.toLowerCase()) {
+        if (String(storedUser[i][key]).toLowerCase() === inputDigitalCardUserLogout.value.toLowerCase()) {
           let user = i;
           for (let key2 in storedUser[user]) {
-            if (storedUser[user][key2].toLowerCase() === inputDigitalCardNumberLogout.value.toLowerCase()) {
+            if (String(storedUser[user][key2]).toLowerCase() === inputDigitalCardNumberLogout.value.toLowerCase()) {
 
               document.getElementsByClassName("digital-counts__box_count")[0].textContent = storedUser[user].visits
               document.getElementsByClassName("digital-counts__box_count")[1].textContent = storedUser[user].bonuses;
