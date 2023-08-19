@@ -45,8 +45,8 @@ let pageUser = "";
 let pageUserName = "";
 let pageCounts = {
   visits: 0,
-  bonuses: 1240,
-  books: 0,
+  //bonuses: 1240,
+  //books: 0,
 }
 
 //overlay
@@ -96,6 +96,7 @@ let btnUser = document.getElementById("user-login");
 let windowMyProfile = document.getElementById("my-profile-window");
 let btnCloseProfileWindow = document.getElementById("close-profile-window");
 let btnCopyProfileCard = document.getElementById("btn-modal-profile-copy");
+let listMyProfile = document.getElementsByClassName("modal-profile_list")[0];
 
 //modal buy window
 let windowModalBuy = document.getElementById("window-modal-buy");
@@ -161,6 +162,7 @@ btnRegisterSave.addEventListener("click", () => {
     visits: 1,
     bonuses: 1240,
     books: 0,
+    buttonsNumber: [],
   }
 
   if (storedUser !== null) { 
@@ -464,10 +466,11 @@ let radioSpring = document.getElementById("spring");
 let radioSummer = document.getElementById("summer");
 let radioAutumn = document.getElementById("autumn");
 let books = document.getElementsByClassName("favorites__books_container");
+let bookName = document.getElementsByClassName("book-name");
 
 let buttonsFavoritesBuy = document.getElementsByClassName("favorites__books_box_btn-buy");
 
-for (let i = 0; i < buttonsFavoritesBuy.length; i++) {
+for (let i = 0; i < buttonsFavoritesBuy.length; i++) { //click button Buy in favorites section
   buttonsFavoritesBuy[i].addEventListener("click", () => {
     if (pageLogin === false && buttonsFavoritesBuy[i].textContent === "Buy") {
       loginWindow.classList.remove("unvisible");
@@ -477,8 +480,19 @@ for (let i = 0; i < buttonsFavoritesBuy.length; i++) {
     if (pageLogin === true && pageLoginSubscription === true && buttonsFavoritesBuy[i].textContent === "Buy") {
       buttonsFavoritesBuy[i].textContent = "Own";
       buttonsFavoritesBuy[i].disabled = true;
-      pageCounts.books = pageCounts.books + 1;
-      document.getElementsByClassName("counts")[2].textContent = pageCounts.books;
+      if (pageLoginIndex !== "undefined") {
+        let storedUser = JSON.parse(localStorage.getItem("userData"));
+        if (storedUser !== null) {
+          storedUser[pageLoginIndex].books = storedUser[pageLoginIndex].books + 1;
+          storedUser[pageLoginIndex].buttonsNumber.push(i);
+          document.getElementsByClassName("counts")[2].textContent = storedUser[pageLoginIndex].books;
+
+          listMyProfile.append(document.createElement("li"));
+          listMyProfile.getElementsByTagName("li")[listMyProfile.getElementsByTagName("li").length - 1].textContent = bookName[i].textContent.slice(0, bookName[i].textContent.indexOf("By ")) + "," + bookName[i].textContent.slice(bookName[i].textContent.indexOf("By ")+2, bookName[i].textContent.length);
+
+          localStorage.setItem("userData", JSON.stringify(storedUser));
+        }
+      }
       return;
     }
     if (pageLogin === true && buttonsFavoritesBuy[i].textContent === "Buy") {
@@ -561,6 +575,20 @@ function checkLogin() {
     btnLogin.classList.add("unvisible");
     btnUser.textContent = pageUser;
     btnUser.classList.remove("unvisible");
+    if (pageLoginSubscription === true) {
+      if (pageLoginIndex !== "undefined") {
+        let storedUser = JSON.parse(localStorage.getItem("userData"));
+        if (storedUser !== null) {
+          for (let i = 0; i < storedUser[pageLoginIndex].buttonsNumber.length; i++) {
+            buttonsFavoritesBuy[storedUser[pageLoginIndex].buttonsNumber[i]].textContent = "Own";
+            buttonsFavoritesBuy[storedUser[pageLoginIndex].buttonsNumber[i]].disabled = true;
+            listMyProfile.append(document.createElement("li"));
+            listMyProfile.getElementsByTagName("li")[listMyProfile.getElementsByTagName("li").length - 1].textContent = bookName[storedUser[pageLoginIndex].buttonsNumber[i]].textContent.slice(0, bookName[storedUser[pageLoginIndex].buttonsNumber[i]].textContent.indexOf("By ")) + "," + bookName[storedUser[pageLoginIndex].buttonsNumber[i]].textContent.slice(bookName[storedUser[pageLoginIndex].buttonsNumber[i]].textContent.indexOf("By ")+2, bookName[storedUser[pageLoginIndex].buttonsNumber[i]].textContent.length)
+          }
+          document.getElementsByClassName("counts")[2].textContent = storedUser[pageLoginIndex].books;
+        }
+      }
+    } 
   }
 
   if (pageLogin === false) {
@@ -568,10 +596,18 @@ function checkLogin() {
     btnUser.textContent = "";
     btnUser.classList.add("unvisible");
     pageLoginSubscription = false;
-    pageCounts.books = 0;
+    //pageCounts.books = 0;
     for (let i = 0; i < buttonsFavoritesBuy.length; i++) {
       buttonsFavoritesBuy[i].textContent = "Buy";
       buttonsFavoritesBuy[i].disabled = false;
     }
+    for (let i = listMyProfile.getElementsByTagName("li").length - 1; i > -1; i--) {
+      listMyProfile.getElementsByTagName("li")[i].remove();
+    }
   }
 }
+
+//let bookName = document.getElementsByClassName("book-name");
+console.log(
+  bookName[0].textContent.slice(0, bookName[0].textContent.indexOf("By ")) + "," + bookName[0].textContent.slice(bookName[0].textContent.indexOf("By ")+2, bookName[0].textContent.length)
+  )
