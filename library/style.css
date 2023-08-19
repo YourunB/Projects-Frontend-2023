@@ -1198,6 +1198,10 @@ section{}
   box-shadow: 0 4px 3px 0px rgba(100, 100, 100, 0.4);
 }
 
+.library-card-height {
+  height: 386px;
+}
+
 .library-card__card {
   background: #BB945F;
   padding: 20px 20px 25px 20px;
@@ -1232,6 +1236,77 @@ section{}
 
 .library-card__card input {margin-top: 25px;}
 .library-card__card input:first-of-type {margin-top: 20px;}
+
+.library-card__card input:disabled {
+  color: #BB945F;
+  text-transform: capitalize;
+}
+
+.form-login {
+  padding-bottom: 17px;
+}
+
+.digital-counts {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  justify-content: center;
+  gap: 35px;
+
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.digital-counts__box p {
+  margin: 0 0 4px 0;
+  padding: 0;
+}
+
+.digital-counts__box_count {
+  margin: 4px 0 0 0;
+}
+
+.digital-counts-double {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  justify-content: center;
+  gap: 35px;
+
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.digital-counts__box-double p {
+  margin: 0 0 4px 0;
+  padding: 0;
+}
+
+.digital-counts__box_count-double {
+  margin: 4px 0 0 0;
+}
 
 .library-card__button {
   display: block;
