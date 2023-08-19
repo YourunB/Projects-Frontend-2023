@@ -481,6 +481,7 @@ nav {}
   .modal-profile_list {
     margin: 0 0 40px 0;
     padding: 0 0 0 30px;
+    min-height: 50px;
   }
 
   .modal-profile_list li {
