@@ -20,21 +20,21 @@
     <h3 class="login__title">Register</h3>
     <div class="login__data">
       <label for="register-first-name">First name</label>
-      <input id="register-first-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a name from letters on English">
+      <input id="register-first-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a name from letters on English" maxlength="20">
     </div>
     <div class="login__data">
       <label for="register-last-name">Last name</label>
-      <input id="register-last-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a name from letters on English">
+      <input id="register-last-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a name from letters on English"  maxlength="20">
     </div>
     <div class="login__data">
       <label for="register-mail">E-mail</label>
-      <input id="register-mail" type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required title="Enter email (example name@.gmail.com)">
+      <input id="register-mail" type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required title="Enter email (example name@.gmail.com)" maxlength="30">
     </div>
     <div class="login__data">
       <label for="register-pass">Password</label>
-      <input id="register-pass" type="password" pattern=".{8,20}" required title="Password must be 8 characters or more">
+      <input id="register-pass" type="password" pattern=".{8,20}" required title="Password must be 8 characters or more" maxlength="20">
     </div>
-    <button id="register-btn-save" class="login__btn">Sign Up</button>
+    <button id="register-btn-save" class="login__btn" type="button">Sign Up</button>
     <div class="login__footer"><p>Already have an account?</p><span id="register-login">Login</span></div>
   </form>
 
@@ -43,13 +43,13 @@
     <h3 class="login__title">Login</h3>
     <div class="login__data">
       <label for="login-mail">E-mail or readers card</label>
-      <input id="login-mail" type="text" required title="Enter email or readers card">
+      <input id="login-mail" type="text" required title="Enter email or readers card" maxlength="25">
     </div>
     <div class="login__data">
       <label for="login-pass">Password</label>
-      <input id="login-pass" type="password" pattern=".{8,20}" required title="Password must be 8 characters or more">
+      <input id="login-pass" type="password" pattern=".{8,20}" required title="Password must be 8 characters or more" maxlength="20">
     </div>
-    <button class="login__btn" id="log-in">Log In</button>
+    <button class="login__btn" id="log-in" type="button">Log In</button>
     <div class="login__footer"><p>Don’t have an account?</p><span id="login-reg">Register</span></div>
   </form>
 
@@ -87,9 +87,54 @@
         <li>Dominicana, Angie Cruz</li>
       </ul>
       <div class="modal-profile__footer">
-        Card number<span>F00234030</span><img src="assets/svg/copy.svg" alt="Copy" title="Copy">
+        Card number<span id="card-number">F00234030</span><img src="assets/svg/copy.svg" alt="Copy" title="Copy" id="btn-modal-profile-copy">
       </div>
     </div>
+  </div>
+
+  <form class="modal-buy unvisible" id="window-modal-buy">
+    <div class="modal-buy__header">
+      <h3>Buy a library card</h3>
+      <img src="assets/svg/close-white.svg" alt="Close" title="Close" id="close-modal-buy">
+    </div>
+    <div div class="modal-buy__main">
+      <div>
+        <div class="modal-buy__main_data">
+          <label for="bank-card-number">Bank card number</label>
+          <input id="bank-card-number" type="text" pattern="[0-9]+" required title="Enter the numbers, there should be 16 digits" maxlength="16">
+        </div>
+        <div class="modal-buy__main_data">
+          <label for="expiration-code1">Expiration code</label>
+          <div class="modal-buy__main_data_cvc">
+            <input id="expiration-code1" type="text" maxlength="2" pattern="[0-9]+" required title="Expiration code field must consist of digits (2 digits in total)">
+            <input id="expiration-code2" type="text" maxlength="2" pattern="[0-9]+" required title="Expiration code field must consist of digits (2 digits in total)">
+          </div>
+        </div>
+        <div class="modal-buy__main_data">
+          <label for="cvc">CVC</label>
+          <div class="modal-buy__main_data_cvc">
+            <input id="cvc" type="text" maxlength="3" pattern="[0-9]+" required title="CVC field must consist of digits (3 digits in total)">
+          </div>
+        </div>
+        <div class="modal-buy__main_data modal-buy__main_data_output">
+          <label for="сardholder-name">Cardholder name</label>
+          <input id="сardholder-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a сardholder-name from letters on English" maxlength="30">
+        </div>
+        <div class="modal-buy__main_data">
+          <label for="postal-code">Postal code</label>
+          <input id="postal-code" type="text" pattern="^[a-zA-Z0-9]+" required title="It is allowed to enter numbers / letters(on English)" maxlength="30">
+        </div>
+        <div class="modal-buy__main_data">
+          <label for="city-town">City / Town</label>
+          <input id="city-town" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter the name of the city in English" maxlength="30">
+        </div>
+        <div class="modal-buy__footer">
+          <button class="modal-buy__footer_button" type="button" id="buy-book" disabled>Buy</button><span class="modal-buy__footer_cost">$ 25.00</span>
+        </div>
+      </div>
+      <p class="modal-buy__main_info">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.</p>
+    </form>
+
   </div>
 
   <div class="wrapper">
@@ -481,7 +526,7 @@
                   <input id="cardName" type="text" value="Reader's name" pattern="^[a-zA-Z0-9 \-]+$">
                   <input id="cardNumber" type="text" value="Card number" pattern="^[a-zA-Z0-9 \-]+$">
                 </div>
-                <button id="btnCheckCard">Check the card</button>
+                <button class="library-card__button unvisible" id="btnCheckCard" type="button">Check the card</button>
               </div>
             </form>
 
@@ -489,8 +534,8 @@
               <h4>Get a reader card</h4>
               <p>You will be able to see a reader card after logging into account or you can register a new account</p>
                 <div class="reader-card__buttons">
-                  <button id="btnSignUp">Sign Up</button>
-                  <button id="btnLogIn">Log in</button>
+                  <button id="btnSignUp" type="button">Sign Up</button>
+                  <button id="btnLogIn" type="button">Log in</button>
                 </div>
             </div>
 
