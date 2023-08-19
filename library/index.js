@@ -1,6 +1,6 @@
 score();
 function score() {
-  console.log("Всего баллов: 50 \n1. Вёрстка соответствует макету. Ширина экрана 768px +26 \n2. Ни на одном из разрешений до 640px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется +12 \n3. На ширине экрана 768рх реализовано адаптивное меню +12");
+  console.log("Всего баллов: 200 \n Вёрстка соответствует макету. \n Вёрстка валидная. \n Реализованы все пункты ТЗ + дополнительно реализована БД в localStorage, т.е. все нажатые кнопки и книги сохраняются у пользователя, при повторной авторизации соответственно ничего не теряется, а подтягивается из localStorage и выводится. \n Все окна выполнены в соответствии с макетом. «Rented books:» закомментированы, для реального отображения книг выбранных пользователем. Можете снять комментарий в index.html и сверить.");
 }
 
 let btnMenu = document.getElementById("btn-menu");
@@ -109,6 +109,16 @@ let inputWindowModalBuyCVC = document.getElementById("cvc");
 let inputWindowModalBuyHolder = document.getElementById("сardholder-name");
 let inputWindowModalBuyPost = document.getElementById("postal-code");
 let inputWindowModalBuyCity = document.getElementById("city-town");
+
+//digital-card-section
+let formDigitalLogin = document.getElementById("form-digital-login");
+let formDigitalLogout = document.getElementById("form-digital-logout");
+let inputDigitalCardUser = document.getElementById("cardName-login");
+let inputDigitalCardNumber = document.getElementById("cardNumber-login");
+let inputDigitalCardUserLogout = document.getElementById("cardName");
+let inputDigitalCardNumberLogout = document.getElementById("cardNumber");
+let btnDigitalCardsLogin = document.getElementById("btnLogIn");
+let btnCheckCard = document.getElementById("btnCheckCard");
 
 //-------------------------modal buy window---------------------
 btnWindowModalBuyClose.addEventListener("click", () => {
@@ -278,11 +288,17 @@ btnLogIn.addEventListener("click", () => {
               btnUser.title = pageUserName;
               profile2Number.textContent = storedUser[user].card;
 
+              inputDigitalCardUser.value = pageUserName; //to digital card section
+              inputDigitalCardNumber.value = storedUser[user].card;
+
               if (storedUser[user].subscription === true) pageLoginSubscription = true;
 
               document.getElementsByClassName("counts")[0].textContent = storedUser[user].visits; //add counts to page on preload
               document.getElementsByClassName("counts")[1].textContent = storedUser[user].bonuses;
               document.getElementsByClassName("counts")[2].textContent = storedUser[user].books;
+              document.getElementsByClassName("digital-counts__box_count")[0].textContent = storedUser[user].visits
+              document.getElementsByClassName("digital-counts__box_count")[1].textContent = storedUser[user].bonuses;
+              document.getElementsByClassName("digital-counts__box_count")[2].textContent = storedUser[user].books;
 
               checkLogin();
 
@@ -486,6 +502,7 @@ for (let i = 0; i < buttonsFavoritesBuy.length; i++) { //click button Buy in fav
           storedUser[pageLoginIndex].books = storedUser[pageLoginIndex].books + 1;
           storedUser[pageLoginIndex].buttonsNumber.push(i);
           document.getElementsByClassName("counts")[2].textContent = storedUser[pageLoginIndex].books;
+          document.getElementsByClassName("digital-counts__box_count")[2].textContent = storedUser[pageLoginIndex].books;
 
           listMyProfile.append(document.createElement("li"));
           listMyProfile.getElementsByTagName("li")[listMyProfile.getElementsByTagName("li").length - 1].textContent = bookName[i].textContent.slice(0, bookName[i].textContent.indexOf("By ")) + "," + bookName[i].textContent.slice(bookName[i].textContent.indexOf("By ")+2, bookName[i].textContent.length);
@@ -547,9 +564,6 @@ radioAutumn.addEventListener("click", () => { if (radioAutumn.checked) showBook(
 
 //--------------------------------------Digital Library Cards--------------------------------------
 
-let btnCheckCard = document.getElementById("btnCheckCard");
-let btnDigitalCardsLogin = document.getElementById("btnLogIn");
-
 btnCheckCard.addEventListener("click", () =>{
   event.preventDefault();
 });
@@ -557,6 +571,53 @@ btnCheckCard.addEventListener("click", () =>{
 btnDigitalCardsLogin.addEventListener("click", () => {
   loginWindow.classList.remove("unvisible");
   overlay.classList.remove("unvisible");
+});
+
+btnCheckCard.addEventListener("click", () => {
+  if (inputDigitalCardUserLogout.value.length === 0 || inputDigitalCardNumberLogout.value.length === 0) {
+    alert("Fill in all the fields");
+    return;
+  }
+  if (inputDigitalCardUserLogout.validity.valid === false || inputDigitalCardNumberLogout.validity.valid === false) {
+    alert("Enter the correct data");
+    return;
+  }
+  if (!inputDigitalCardUserLogout.value.trim() || !inputDigitalCardNumberLogout.value.trim()) {
+    alert("The input must not be empty");
+    return;
+  }
+  
+  let storedUser = JSON.parse(localStorage.getItem("userData"));
+  if (storedUser !== null) {
+    for (let i = 0; i < storedUser.length; i++) {
+      for (let key in storedUser[i]) {
+        if (storedUser[i][key].toLowerCase() === inputDigitalCardUserLogout.value.toLowerCase()) {
+          let user = i;
+          for (let key2 in storedUser[user]) {
+            if (storedUser[user][key2].toLowerCase() === inputDigitalCardNumberLogout.value.toLowerCase()) {
+
+              document.getElementsByClassName("digital-counts__box_count")[0].textContent = storedUser[user].visits
+              document.getElementsByClassName("digital-counts__box_count")[1].textContent = storedUser[user].bonuses;
+              document.getElementsByClassName("digital-counts__box_count")[2].textContent = storedUser[user].books;
+              document.getElementsByClassName("digital-counts-double")[0].classList.remove("unvisible");
+              btnCheckCard.classList.add("unvisible");
+
+              setTimeout(()=>{
+                document.getElementsByClassName("digital-counts-double")[0].classList.add("unvisible");
+                btnCheckCard.classList.remove("unvisible");
+                inputDigitalCardUserLogout.value = "Reader's name";
+                inputDigitalCardNumberLogout.value = "Card number";
+              }, 10000);
+
+              return
+            }
+          }
+        }
+      }
+    }
+  }
+
+  alert("Sorry, no such user was found");
 });
 
 //------------------------------------------------all page ------------------------------------------
@@ -588,7 +649,9 @@ function checkLogin() {
           document.getElementsByClassName("counts")[2].textContent = storedUser[pageLoginIndex].books;
         }
       }
-    } 
+    }
+    formDigitalLogin.classList.remove("unvisible");
+    formDigitalLogout.classList.add("unvisible");
   }
 
   if (pageLogin === false) {
@@ -604,10 +667,9 @@ function checkLogin() {
     for (let i = listMyProfile.getElementsByTagName("li").length - 1; i > -1; i--) {
       listMyProfile.getElementsByTagName("li")[i].remove();
     }
+    inputDigitalCardUserLogout.value = "Reader's name";
+    inputDigitalCardNumberLogout.value = "Card number";
+    formDigitalLogin.classList.add("unvisible");
+    formDigitalLogout.classList.remove("unvisible");
   }
 }
-
-//let bookName = document.getElementsByClassName("book-name");
-console.log(
-  bookName[0].textContent.slice(0, bookName[0].textContent.indexOf("By ")) + "," + bookName[0].textContent.slice(bookName[0].textContent.indexOf("By ")+2, bookName[0].textContent.length)
-  )
