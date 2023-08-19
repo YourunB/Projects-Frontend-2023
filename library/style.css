@@ -84,9 +84,12 @@ header {
     border-radius: 50%;
     background: white;
     color: #BB945F;
-    font-size: 18px;
+    color: #BB945F;
+    font-family: Inter;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
+    line-height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -509,6 +512,103 @@ nav {}
     padding: 0 16px;
   }
 
+  .modal-buy {
+    width: 640px;
+    height: 540px;
+    box-sizing: border-box;
+    background: #FFF;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1101;
+  }
+
+  .modal-buy__header {
+    background: #0C0C0E;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .modal-buy__header h3 {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Forum;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .modal-buy__header img {
+    position: absolute;
+    transition: 1s;
+    top: 23px;
+    right: 19px;
+  }
+
+  .modal-buy__header img:hover {cursor: pointer;}
+  
+  .modal-buy__main {
+    padding: 30px 35px 40px 35px;
+    display: grid;
+    grid-template-columns: 200px 330px;
+    gap: 40px;
+  }
+
+  .modal-buy__main_info {
+    margin: 0;
+    padding: 0;
+    color: #8E8E8E;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 2px;
+  }
+
+  .modal-buy__main_data {
+    margin-bottom: 10px;
+  }
+
+  .modal-buy__main_data label {
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .modal-buy__main_data input {
+    height: 20px;
+    border: 1px solid #BB945F;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
+  .modal-buy__main_data_cvc {
+    display: flex;
+    gap: 10px;
+  }
+
+  .modal-buy__main_data_cvc input {
+    width: 45px;
+  }
+
+  .modal-buy__main_data_output {
+    margin-top: 20px;
+  }
+
   .overlay {
     position: fixed;
     overflow: auto;
@@ -518,6 +618,63 @@ nav {}
     height: 100%;
     z-index: 1100;
     background-color: rgba(0,0,0,0.8);
+  }
+
+  .modal-buy__footer {
+    margin-top: 20px;
+    display: flex;
+    gap: 25px;
+    align-items: flex-end;
+  }
+
+  .modal-buy__footer_button {
+    background: none;
+    width: 75px;
+    height: 30px;
+    color: #0C0C0E;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    border: 1px solid #0C0C0E;
+    transition: 1s;
+  }
+
+  .modal-buy__footer_button:hover,
+  .modal-buy__footer_button:active,
+  .modal-buy__footer_button:focus {
+    cursor: pointer;
+    background: #BB945F;
+    border-color: #BB945F;
+  }
+
+  .modal-buy__footer_button:disabled {
+    color: #BB945F;
+    border-color: #BB945F;
+  }
+
+  .modal-buy__footer_button:disabled:hover,
+  .modal-buy__footer_button:disabled:active,
+  .modal-buy__footer_button:disabled:focus {
+    color: #BB945F;
+    border-color: #BB945F;
+    cursor: default;
+    background: none;
+  }
+
+  .modal-buy__footer_cost {
+    color: #0C0C0E;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
 
   .overflow {overflow: hidden;}
@@ -1075,7 +1232,7 @@ section{}
 .library-card__card input {margin-top: 25px;}
 .library-card__card input:first-of-type {margin-top: 20px;}
 
-.library-card button {
+.library-card__button {
   display: block;
   margin: auto;
   padding: 10px 40px;
@@ -1093,7 +1250,7 @@ section{}
   transition: 1s;
 }
 
-.library-card button:hover {
+.library-card__button:hover {
   cursor: pointer;
   background: #BB945F;
   border-color: #BB945F;
@@ -1165,8 +1322,6 @@ section{}
   cursor: pointer;
   background: #BB945F;
   border-color: #BB945F;
-  cursor: pointer;
-  transition: 1s;
 }
 
 footer {
