@@ -1504,10 +1504,10 @@ footer {
 }
 
 .visible {display: block;}
-.slow-visible {animation: show 1s ease-in-out;}
+.slow-visible {animation: show 0.5s ease-in-out;}
 
 .unvisible {display: none;}
-.slow-unvisible {animation: hide 1s ease-in-out;}
+.slow-unvisible {animation: hide 0.5s ease-in-out;}
 
 .show-menu {
   -webkit-transition: all .3s ease-in-out;
