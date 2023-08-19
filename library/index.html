@@ -20,11 +20,11 @@
     <h3 class="login__title">Register</h3>
     <div class="login__data">
       <label for="register-first-name">First name</label>
-      <input id="register-first-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a name from letters on English" maxlength="20">
+      <input id="register-first-name" type="text" pattern="^[a-zA-Z \-']+$" required title="Enter a name from letters on English" maxlength="20">
     </div>
     <div class="login__data">
       <label for="register-last-name">Last name</label>
-      <input id="register-last-name" type="text" pattern="^[a-zA-Z \-]+$" required title="Enter a name from letters on English"  maxlength="20">
+      <input id="register-last-name" type="text" pattern="^[a-zA-Z \-']+$" required title="Enter a name from letters on English"  maxlength="20">
     </div>
     <div class="login__data">
       <label for="register-mail">E-mail</label>
@@ -53,7 +53,7 @@
     <div class="login__footer"><p>Don’t have an account?</p><span id="login-reg">Register</span></div>
   </form>
 
-  <div class="modal-profile " id="my-profile-window">
+  <div class="modal-profile unvisible" id="my-profile-window">
     <div class="modal-profile__left">
       <div class="modal-profile__left_container">
         <div class="modal-profile__left_initials">JD</div>
@@ -516,21 +516,38 @@
           </div>
 
           <div class="library__block">
-
-            <form>
+<!---------------------------------------------------------------old block--------------------------------------------------------------------->
+            <form id="form-digital-logout">
               <h3>Find your Library card</h3>
 
-              <div class="library-card">
+              <div class="library-card library-card-height">
                 <div class="library-card__card">
                   <h4>Brooklyn Public Library</h4>
-                  <input id="cardName" type="text" value="Reader's name" pattern="^[a-zA-Z0-9 \-]+$">
-                  <input id="cardNumber" type="text" value="Card number" pattern="^[a-zA-Z0-9 \-]+$">
+                  <input id="cardName" type="text" value="Reader's name" pattern="^[a-zA-Z \-']+$" title="Enter the name in English" maxlength="50">
+                  <input id="cardNumber" type="text" value="Card number" pattern="^[a-zA-Z0-9 \-]+$" title="Enter the card number (numbers and letters)" maxlength="9">
                 </div>
-                <button class="library-card__button unvisible" id="btnCheckCard" type="button">Check the card</button>
+                <button class="library-card__button" id="btnCheckCard" type="button">Check the card</button>
+                <div class="digital-counts-double unvisible">
+                  <div class="digital-counts__box-double">
+                    <p>Visits</p>
+                    <img src="assets/svg/visits.svg" alt="User" title="Your visits">
+                    <div class="digital-counts__box_count-double">23</div>
+                  </div>
+                  <div class="digital-counts__box-double">
+                    <p>Bonuses</p>
+                    <img src="assets/svg/bonuses.svg" alt="Bonus" title="Your bonuses">
+                    <div class="digital-counts__box_count-double">1240</div>
+                  </div>
+                  <div class="digital-counts__box-double">
+                    <p>Books</p>
+                    <img src="assets/svg/books.svg" alt="Books" title="Your books">
+                    <div class="digital-counts__box_count-double">2</div>
+                  </div>
+                </div>
               </div>
             </form>
 
-            <div class="reader-card">
+            <div class="reader-card unvisible">
               <h4>Get a reader card</h4>
               <p>You will be able to see a reader card after logging into account or you can register a new account</p>
                 <div class="reader-card__buttons">
@@ -538,7 +555,44 @@
                   <button id="btnLogIn" type="button">Log in</button>
                 </div>
             </div>
+<!---------------------------------------------------------------new block--------------------------------------------------------------------->
+            <form id="login-digital-form">
+              <h3>Your Library card</h3>
 
+              <div class="library-card form-login unvisible" id="form-digital-login">
+                <div class="library-card__card">
+                  <h4>Brooklyn Public Library</h4>
+                  <input id="cardName-login" type="text" value="John Doe" pattern="^[a-zA-Z0-9 \-]+$" disabled>
+                  <input id="cardNumber-login" type="text" value="F00234030" pattern="^[a-zA-Z0-9 \-]+$" disabled>
+                </div>
+                <div class="digital-counts">
+                  <div class="digital-counts__box">
+                    <p>Visits</p>
+                    <img src="assets/svg/visits.svg" alt="User" title="Your visits">
+                    <div class="digital-counts__box_count">23</div>
+                  </div>
+                  <div class="digital-counts__box">
+                    <p>Bonuses</p>
+                    <img src="assets/svg/bonuses.svg" alt="Bonus" title="Your bonuses">
+                    <div class="digital-counts__box_count">1240</div>
+                  </div>
+                  <div class="digital-counts__box">
+                    <p>Books</p>
+                    <img src="assets/svg/books.svg" alt="Books" title="Your books">
+                    <div class="digital-counts__box_count">2</div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <div class="reader-card">
+              <h4>Visit your profile</h4>
+              <p>With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
+                <div class="reader-card__buttons">
+                  <button id="btn-digital-profile" type="button">Profile</button>
+                </div>
+            </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------>
           </div>
         </section>
 
