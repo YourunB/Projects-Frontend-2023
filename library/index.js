@@ -69,9 +69,6 @@ let inputLoginMail = document.getElementById("login-mail");
 let inputLoginPass = document.getElementById("login-pass");
 
 
-let btnSignUp = document.getElementById("btnSignUp"); //btn from Digital Library Cards
-
-
 //reg window
 let registerWindow = document.getElementById("register");
 let btnCloseRegister = document.getElementById("register-close");
@@ -118,6 +115,9 @@ let inputDigitalCardNumber = document.getElementById("cardNumber-login");
 let inputDigitalCardUserLogout = document.getElementById("cardName");
 let inputDigitalCardNumberLogout = document.getElementById("cardNumber");
 let btnDigitalCardsLogin = document.getElementById("btnLogIn");
+let btnSignUp = document.getElementById("btnSignUp");
+let btnDigitalCardProfile = document.getElementById("btn-digital-profile");
+
 let btnCheckCard = document.getElementById("btnCheckCard");
 
 //-------------------------modal buy window---------------------
@@ -620,6 +620,11 @@ btnCheckCard.addEventListener("click", () => {
   alert("Sorry, no such user was found");
 });
 
+btnDigitalCardProfile.addEventListener("click", () => {
+  windowMyProfile.classList.remove("unvisible");
+  overlay.classList.remove("unvisible");
+});
+
 //------------------------------------------------all page ------------------------------------------
 
 btnUser.addEventListener("click", () => { profile2.classList.remove("unvisible"); }); //open profile2
@@ -652,6 +657,8 @@ function checkLogin() {
     }
     formDigitalLogin.classList.remove("unvisible");
     formDigitalLogout.classList.add("unvisible");
+    document.getElementsByClassName("reader-card")[0].classList.add("unvisible");
+    document.getElementsByClassName("reader-card")[1].classList.remove("unvisible");
   }
 
   if (pageLogin === false) {
@@ -671,5 +678,7 @@ function checkLogin() {
     inputDigitalCardNumberLogout.value = "Card number";
     formDigitalLogin.classList.add("unvisible");
     formDigitalLogout.classList.remove("unvisible");
+    document.getElementsByClassName("reader-card")[0].classList.remove("unvisible");
+    document.getElementsByClassName("reader-card")[1].classList.add("unvisible");
   }
 }
