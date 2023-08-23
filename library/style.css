@@ -143,7 +143,7 @@ nav {}
     position: absolute;
     z-index: 101;
     display: block;
-    min-width: 80px;
+    width: 80px;
     height: 115px;
     background: white;
     bottom: 0;
@@ -162,7 +162,7 @@ nav {}
     margin: 0 auto 15px auto;
   }
 
-  .profile h3 {
+  .profile__title {
     padding: 0;
     margin: 5px 0 5px 0;
     color: #000;
@@ -172,6 +172,8 @@ nav {}
     font-weight: 700;
     line-height: 20px;
   }
+
+  .profile__title_card {font-size: 13px;}
 
   .profile p {
     padding: 0;
@@ -331,7 +333,7 @@ nav {}
     position: absolute;
     z-index: 1101;
     width: 600px;
-    min-height: 400px;
+    height: 400px;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 170px 430px;
@@ -390,7 +392,6 @@ nav {}
   }
 
   .modal-profile__left_name {
-    width: fit-content;
     padding: 5px 15px;
     margin: 0;
     background: #FFF;
@@ -402,6 +403,9 @@ nav {}
     font-weight: 400;
     line-height: 20px;
     text-transform: capitalize;
+    max-width: 160px;
+    box-sizing: border-box;
+    word-wrap: break-word;
   }
 
   .modal-profile__right {
@@ -482,6 +486,8 @@ nav {}
     margin: 0 0 40px 0;
     padding: 0 0 0 30px;
     min-height: 50px;
+    max-height: 50px;
+    overflow-y: auto;
   }
 
   .modal-profile_list li {
