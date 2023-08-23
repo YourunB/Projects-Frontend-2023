@@ -1,6 +1,6 @@
 score();
 function score() {
-  console.log("Всего баллов: 200 \n Вёрстка соответствует макету. \n Вёрстка валидная. \n Реализованы все пункты ТЗ + дополнительно реализована БД в localStorage, т.е. все нажатые кнопки и книги сохраняются у пользователя, при повторной авторизации соответственно ничего не теряется, а подтягивается из localStorage и выводится. \n Все окна выполнены в соответствии с макетом. «Rented books:» закомментированы, для реального отображения книг выбранных пользователем. Можете снять комментарий в index.html и сверить.");
+  console.log("Всего баллов: 200 \n Вёрстка соответствует макету. \n Вёрстка валидная. \n Реализованы все пункты ТЗ");
 }
 
 let btnMenu = document.getElementById("btn-menu");
@@ -659,6 +659,8 @@ function checkLogin() {
     formDigitalLogout.classList.add("unvisible");
     document.getElementsByClassName("reader-card")[0].classList.add("unvisible");
     document.getElementsByClassName("reader-card")[1].classList.remove("unvisible");
+    document.getElementsByClassName("modal-profile__left_initials")[0].textContent = pageUser;
+    document.getElementsByClassName("modal-profile__left_name")[0].textContent = pageUserName;
   }
 
   if (pageLogin === false) {
