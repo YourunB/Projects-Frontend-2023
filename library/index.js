@@ -5,7 +5,7 @@ function score() {
 
 let btnMenu = document.getElementById("btn-menu");
 //let nav = document.getElementsByTagName("nav")[0];
-let menu = document.getElementsByTagName("ul")[0];
+let menu = document.getElementsByTagName("ul")[1];
 
 function checkMenuImg() {
   if (menu.classList == "show-menu") btnMenu.src = "assets/svg/burger-menu-close.svg";
@@ -299,6 +299,7 @@ btnLogIn.addEventListener("click", () => {
               document.getElementsByClassName("digital-counts__box_count")[0].textContent = storedUser[user].visits
               document.getElementsByClassName("digital-counts__box_count")[1].textContent = storedUser[user].bonuses;
               document.getElementsByClassName("digital-counts__box_count")[2].textContent = storedUser[user].books;
+              document.getElementById("card-number").textContent = storedUser[user].card;
 
               checkLogin();
 
@@ -395,7 +396,6 @@ document.getElementById("card-number").addEventListener("click", () => { copyCar
 
 function copyCardNumber() {
   navigator.clipboard.writeText(document.getElementById("card-number").textContent);
-  alert("The card number was copied");
 }
 
 //-------------------------------------------about----------------------------------------
@@ -684,3 +684,4 @@ function checkLogin() {
     document.getElementsByClassName("reader-card")[1].classList.add("unvisible");
   }
 }
+
