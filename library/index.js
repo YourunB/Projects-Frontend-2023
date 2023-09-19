@@ -684,4 +684,3 @@ function checkLogin() {
     document.getElementsByClassName("reader-card")[1].classList.add("unvisible");
   }
 }
-
