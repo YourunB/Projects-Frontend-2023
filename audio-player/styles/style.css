@@ -66,6 +66,7 @@ p {
   width: 100%;
   height: 320px;
   object-fit: cover;
+  animation: attenuation 5s ease-in-out infinite alternate;
 }
 
 .player__controls {
@@ -141,6 +142,12 @@ button:active {
 
 .player__controls_main_song_name {
   font-weight: 700;
+  background: linear-gradient(to right,#ba7dff 20%, #00affa 30%, #0190cd 70%, #cc66ff 80%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 500% auto;
+  animation: iridescent 5s ease-in-out infinite alternate;
 }
 
 .player__controls_mute {
@@ -207,6 +214,97 @@ button:active {
   transform: scale(1.05);
 }
 
+input[type=range] {
+  transition: 1s;
+  background: none;
+  height: 10px;
+  -webkit-appearance: none;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 2px #000000;
+  background: #ffffff;
+  border-radius: 3px;
+  border: 1px solid #aeff00;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 2px 2px 1px #4e4e4e;
+  border: 1px solid #aeff00;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  background: #aeff00;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ffffff;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 2px #000000;
+  background: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #aeff00;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 2px 2px 1px #4e4e4e;
+  border: 1px solid #aeff00;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  background: #aeff00;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #ffffff;
+  border: 1px solid #aeff00;
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #ffffff;
+  border: 1px solid #aeff00;
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 2px 2px 1px #4e4e4e;
+  border: 1px solid #aeff00;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  background: #aeff00;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #ffffff;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ffffff;
+}
+
 footer {
   width: 100%;
   height: 80px;
@@ -238,4 +336,14 @@ footer {
   font-size: 20px;
   color: white;
   text-shadow: 0 0 5px rgb(0,0,0, 1);
+}
+
+@keyframes iridescent  {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+@keyframes attenuation  {
+  0% {transform: scale(1);}
+  100% {transform: scale(1.05);}
 }
