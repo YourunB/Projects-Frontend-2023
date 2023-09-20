@@ -21,6 +21,14 @@ let track = 0;
 
 const song = [["amsterdam", "Super Monkey", "Amsterdam"], ["another-bric", "Pink Floyd", "Another Brick In The Wall"], ["california-dreamin", "The Mamas & the Papas", "California Dreamin"]];
 
+function changeTrack(track) {
+  displayImg.src = "assets/img/" + song[track][0] + ".jpg";
+  backImg.src = "assets/img/" + song[track][0] + ".jpg";
+  player.src = "assets/audio/" + song[track][0] + ".mp3";
+  nameArtist.textContent = song[track][1];
+  nameSong.textContent = song[track][2];
+}
+
 btnNext.addEventListener("click", () => {
   track++;
   if (track > 2) track = 0;
