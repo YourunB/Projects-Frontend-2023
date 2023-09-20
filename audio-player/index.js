@@ -47,6 +47,35 @@ function changeTrack(track) {
   nameSong.textContent = song[track][2];
 }
 
+function formatTime(seconds) {
+  //const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  return m + ":" + ((s < 10) ? "0" + s.toFixed(0) : s.toFixed(0));
+}
+
+function timePosition() {
+  timeLine.min = 0;
+  timeLine.max = player.duration;
+  timeLine.value = player.currentTime;
+  timeSong.textContent = formatTime(player.currentTime);
+  timeDuration.textContent = formatTime(player.duration);
+}
+
+setInterval(() => {
+  timePosition();
+}, 1000);
+
+timeLine.addEventListener("input", () => {
+  player.currentTime = timeLine.value;
+  timePosition();
+});
+
+volumeLine.addEventListener("input", () => {
+  trackVolume = volumeLine.value / 100;
+  player.volume = trackVolume;
+});
+
 btnNext.addEventListener("click", () => {
   track++;
   if (track > 2) track = 0;
