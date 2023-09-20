@@ -47,6 +47,16 @@ function changeTrack(track) {
   nameSong.textContent = song[track][2];
 }
 
+function checkPlay() {
+  if (player.paused) btnPlay.classList.remove("player__controls_main_pause");
+  else btnPlay.classList.add("player__controls_main_pause");
+}
+
+function checkVolume() {
+  if (player.volume > 0.01) btnMute.classList.add("player__controls_mute_off");
+  else btnMute.classList.remove("player__controls_mute_off");
+}
+
 function formatTime(seconds) {
   //const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
@@ -74,18 +84,27 @@ timeLine.addEventListener("input", () => {
 volumeLine.addEventListener("input", () => {
   trackVolume = volumeLine.value / 100;
   player.volume = trackVolume;
+  checkVolume();
+});
+
+btnSave.addEventListener("click", () => {
+  download(player.src);
 });
 
 btnNext.addEventListener("click", () => {
   track++;
   if (track > 2) track = 0;
   changeTrack(track);
+  checkPlay();
+  setTimeout(() => timePosition, 250);
 });
 
 btnPrev.addEventListener("click", () => {
   track--;
   if (track < 0) track = 2;
   changeTrack(track);
+  checkPlay();
+  setTimeout(() => timePosition, 250);
 });
 
 btnPlay.addEventListener("click", () => {
@@ -95,13 +114,11 @@ btnPlay.addEventListener("click", () => {
   } else {
     player.pause();
   }
-});
-
-btnSave.addEventListener("click", () => {
-  download(player.src);
+  checkPlay();
 });
 
 btnMute.addEventListener("click", () => {
   if (player.volume != 0) player.volume = 0;
   else player.volume = trackVolume;
+  checkVolume();
 });
