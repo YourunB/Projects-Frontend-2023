@@ -61,6 +61,7 @@ function formatTime(seconds) {
   //const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
   const s = seconds % 60;
+  if (isNaN(m) || isNaN(s)) return "LOAD";
   return m + ":" + ((s < 10) ? "0" + s.toFixed(0) : s.toFixed(0));
 }
 
