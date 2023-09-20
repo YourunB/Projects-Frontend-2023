@@ -10,6 +10,34 @@
 </head>
 <body>
 
+  <audio src="assets/audio/amsterdam.mp3" controls id="player"></audio>
+
+  <main>
+    <div class="player">
+      <div class="player__display">
+        <img class="player__display_song-img" src="assets/img/amsterdam.jpg" alt="Song" id="display-image">
+      </div>
+
+      <div class="player__controls">
+
+        <div class="player__controls_main">
+          <button id="btn-play-pause" class="player__controls_main_play"></button>
+
+          <div class="player__controls_main_song">
+            <h3 class="player__controls_main_song_artist" id="name-artist">Super Monkey</h3>
+            <p class="player__controls_main_song_name" id="name-song">Amsterdam</p>
+          </div>
+
+          <div>
+            <button class="player__controls_main_previous" id="btn-previous-song"></button>
+            <button class="player__controls_main_next" id="btn-next-song"></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
   <script src="index.js"></script>
 
 </body>
