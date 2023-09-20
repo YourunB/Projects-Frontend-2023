@@ -18,8 +18,26 @@ const timeSong = document.getElementById("song-time");
 const timeDuration = document.getElementById("song-duration");
 
 let track = 0;
+let trackVolume = 1;
 
 const song = [["amsterdam", "Super Monkey", "Amsterdam"], ["another-bric", "Pink Floyd", "Another Brick In The Wall"], ["california-dreamin", "The Mamas & the Papas", "California Dreamin"]];
+
+function download(url) {
+  fetch(url)
+  .then(resp => resp.status === 200 ? resp.blob() : Promise.reject('Something went wrong'))
+  .then(blob => {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'song.mp3';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    console.log("File has downloaded!"); 
+  })
+  .catch(() => console.log("Sorry, not downloaded!"));
+};
 
 function changeTrack(track) {
   displayImg.src = "assets/img/" + song[track][0] + ".jpg";
@@ -48,4 +66,13 @@ btnPlay.addEventListener("click", () => {
   } else {
     player.pause();
   }
+});
+
+btnSave.addEventListener("click", () => {
+  download(player.src);
+});
+
+btnMute.addEventListener("click", () => {
+  if (player.volume != 0) player.volume = 0;
+  else player.volume = trackVolume;
 });
