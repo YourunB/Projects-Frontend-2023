@@ -17,7 +17,21 @@ const timeLine = document.getElementById("timeline");
 const timeSong = document.getElementById("song-time");
 const timeDuration = document.getElementById("song-duration");
 
+let track = 0;
+
 const song = [["amsterdam", "Super Monkey", "Amsterdam"], ["another-bric", "Pink Floyd", "Another Brick In The Wall"], ["california-dreamin", "The Mamas & the Papas", "California Dreamin"]];
+
+btnNext.addEventListener("click", () => {
+  track++;
+  if (track > 2) track = 0;
+  changeTrack(track);
+});
+
+btnPrev.addEventListener("click", () => {
+  track--;
+  if (track < 0) track = 2;
+  changeTrack(track);
+});
 
 btnPlay.addEventListener("click", () => {
   if (player.paused) {
