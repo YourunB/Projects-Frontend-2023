@@ -28,4 +28,26 @@ function getImages(page, search) {
       }
     }
   }
+}
+
+function throttle(callee, timeout) {
+  let timer = null
+
+  return function perform(...args) {
+    if (timer) return
+
+    timer = setTimeout(() => {
+      callee(...args)
+
+      clearTimeout(timer)
+      timer = null
+    }, timeout)
   }
+}
+
+  window.addEventListener("scroll", throttle( () => {
+    let pageSize = document.body.getBoundingClientRect().height;
+    let displaySize = window.screen.height;
+    let scrollPosition = window.scrollY;
+    if (scrollPosition + displaySize > pageSize - 20) getImages(page, search); 
+  }, 250));
