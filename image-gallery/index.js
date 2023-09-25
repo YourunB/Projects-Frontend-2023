@@ -1,20 +1,46 @@
 const inputSearch = document.getElementById('search-image');
 const main = document.getElementById('main');
+const imageFull = document.getElementById('full-image');
 const overlay = document.getElementById('overlay');
+const overlayBack = document.getElementById('overlay-back');
 
 let page = 1;
 let search = 'all';
 
-window.addEventListener("keypress", () => {
+window.addEventListener('keypress', () => {
 if (event.key === 'Enter' && inputSearch.value !== '') {
+  clearCards();
   page = 1;
   search = inputSearch.value;
   getImages(page, search);
+  fillWindow();
 }
 });
 
+inputSearch.addEventListener('input', () => {
+  if (inputSearch.value === '') {
+    clearCards();
+    page = 1;
+    search = 'all';
+    getImages(page, search);
+    fillWindow();
+  }
+});
 
-if (document.body.getBoundingClientRect().height <= window.screen.height) getImages(page, search);
+fillWindow();
+function fillWindow() {
+  if (document.body.getBoundingClientRect().height <= window.screen.height) {
+    getImages(page, search);
+    page += 1;
+  }
+}
+
+function clearCards() {
+  let cards = document.getElementsByClassName('cards');
+  for (let i = cards.length - 1; i >= 0; i -= 1) {
+    cards[i].remove();
+  }
+}
 
 getImages(page, search);
 function getImages(page, search = 'all') {
@@ -76,22 +102,24 @@ function throttle(callee, timeout) {
   }
 }
 
-  window.addEventListener("scroll", throttle( () => {
-    let pageSize = document.body.getBoundingClientRect().height;
-    let displaySize = window.screen.height;
-    let scrollPosition = window.scrollY;
-    if (scrollPosition + displaySize > pageSize - 20) {
-      page += 1;
-      getImages(page, search);
-    }
-  }, 250));
+window.addEventListener("scroll", throttle( () => {
+  let pageSize = document.body.getBoundingClientRect().height;
+  let displaySize = window.screen.height;
+  let scrollPosition = window.scrollY;
+  if (scrollPosition + displaySize > pageSize - 20) {
+    page += 1;
+    getImages(page, search);
+  }
+}, 250));
 
-  main.addEventListener('click', () => {
-    if (event.target.classList == 'cards__image') {
-      event.target.classList.add('cards__image_full');
-      overlay.classList.remove('unvisible');
-    } else {
-      event.target.classList.remove('cards__image_full');
-      overlay.classList.add('unvisible');
-    }
-  })
+main.addEventListener('click', () => {
+  if (event.target.classList == 'cards__image') {
+    console.log(event.target.src)
+    imageFull.src = event.target.src;
+    overlay.classList.add('overlay__index_up');
+    overlayBack.classList.add('overlay__background_show');
+  } else {
+    overlay.classList.remove('overlay__index_up');
+    overlayBack.classList.remove('overlay__background_show');
+  }
+})
