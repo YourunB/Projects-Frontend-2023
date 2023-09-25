@@ -13,8 +13,11 @@ if (event.key === 'Enter' && inputSearch.value !== '') {
 }
 });
 
+
+if (document.body.getBoundingClientRect().height <= window.screen.height) getImages(page, search);
+
 getImages(page, search);
-function getImages(page, search) {
+function getImages(page, search = 'all') {
   let url = '';
   if (search === 'all') url = `https://api.unsplash.com/photos?client_id=4-EJtgSsL_fig8yHRfZ9DaV7_DqqHQZoahL2MaYrEw0&page=${page}`;
   else url = `https://api.unsplash.com/search/photos?client_id=4-EJtgSsL_fig8yHRfZ9DaV7_DqqHQZoahL2MaYrEw0&page=${page}&query=${search}`;
@@ -79,7 +82,6 @@ function throttle(callee, timeout) {
     let scrollPosition = window.scrollY;
     if (scrollPosition + displaySize > pageSize - 20) {
       page += 1;
-      console.log(page)
       getImages(page, search);
     }
   }, 250));
