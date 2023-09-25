@@ -7,10 +7,22 @@ html {
 }
 
 body {
+  color: white;
   background: black;
   padding: 0;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+
+p {
+  padding: 0;
+  margin: 0;
 }
 
 input {
@@ -19,23 +31,90 @@ input {
   border-bottom: 2px white solid;
   outline: none;
   color: white;
+  transition: 2s;
+  width: 200px;
+}
+
+input:hover {
+  width: calc(100% - 280px);
 }
 
 .wrapper {
   max-width: 1400px;
-  padding: 10px 10px 80px 10px;
   width: 100%;
   left: 0;
   right: 0;
   margin: auto;
   min-height: 100vh;
+  padding: 0 10px;
+}
+
+header {
+  padding: 10px 0;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__app {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__app_image {
+  width: 50px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cards {
+  height: 300px;
+  width: 300px;
+  line-height: 0;
+}
+
+.cards__image {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: 1s;
+}
+
+.cards__image:hover {
+  cursor: zoom-in;
+}
+
+.cards__image_full {
+    position: fixed;
+    z-index: 11;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 100vw;
+    max-height: 100vh;
+
+    
+}
+
+.cards__image_full:hover {
+  cursor: zoom-out;
 }
 
 footer {
   position: fixed;
+  z-index: 20;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -44,28 +123,73 @@ footer {
   justify-content: flex-end;
   flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   box-sizing: border-box;
   padding-right: 10px;
 }
 
 .footer__logo {
-  box-sizing: border-box;
   height: 50px;
   background: white;
   padding: 10px;
   border-radius: 5px;
   transition: 1s;
+  opacity: 0.5;
 }
 
 .footer__logo:hover {
   transform: scale(1.1);
-  filter: invert(1);
+  opacity: 1;
 }
 
 .footer__year {
+  cursor: default;
+  opacity: 0.5;
   font-weight: 700;
   font-size: 20px;
   color: white;
   text-shadow: 0 0 5px rgb(0,0,0, 1);
+  transition: 1s;
+}
+
+.footer__year:hover {
+  opacity: 1;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(10px);
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100%;
+  height: 100%;
+}
+
+.unvisible {
+  display: none;
+}
+
+@keyframes full-size {
+  100% {
+    width: auto;
+    max-height: 100vh;
+    height: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    flex-wrap: wrap-reverse;
+  }
+  input:hover {
+    width: 100%;
+  }
 }
