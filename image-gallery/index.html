@@ -10,13 +10,18 @@
 </head>
 <body>
 
+  <div class="overlay unvisible" id="overlay"></div>
   <div class="wrapper">
-    
+
     <header>
-      <input id="search-image" placeholder="Enter to search" type="text" pattern="^[a-zA-Z \-']+$" required title="Enter on English">
+      <input id="search-image" placeholder="Enter to search" type="text" pattern="^[a-zA-Z \-']+$" required title="Enter on English" autocomplete="off" autofocus>
+      <div class="header__app">
+        <h1>Image Gallery</h1>
+        <img src="assets/svg/photo.svg" alt="Photo" class="header__app_image">
+      </div>
     </header>
 
-    <main>
+    <main id="main">
 
     </main>
 
