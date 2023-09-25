@@ -1,6 +1,9 @@
 const inputSearch = document.getElementById('search-image');
 const main = document.getElementById('main');
+
 const imageFull = document.getElementById('full-image');
+const descriptionFull = document.getElementById('full-decription');
+const downloadLink = document.getElementById('download');
 const overlay = document.getElementById('overlay');
 const overlayBack = document.getElementById('overlay-back');
 
@@ -82,6 +85,8 @@ function createImage(smallImage, fullImage, description, altDescription) {
   main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].append(document.createElement('img'));
   main.getElementsByTagName('img')[main.getElementsByTagName('img').length - 1].classList.add('cards__image');
   main.getElementsByClassName('cards__image')[main.getElementsByClassName('cards__image').length - 1].src = smallImage;
+  main.getElementsByClassName('cards__image')[main.getElementsByClassName('cards__image').length - 1].setAttribute('data-download', fullImage);
+  main.getElementsByClassName('cards__image')[main.getElementsByClassName('cards__image').length - 1].setAttribute('data-description', description);
   main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].append(document.createElement('p'));
   main.getElementsByTagName('p')[main.getElementsByTagName('p').length - 1].classList = 'cards__description';
   main.getElementsByClassName('cards__description')[main.getElementsByClassName('cards__description').length - 1].textContent = altDescription;
@@ -114,8 +119,9 @@ window.addEventListener("scroll", throttle( () => {
 
 main.addEventListener('click', () => {
   if (event.target.classList == 'cards__image') {
-    console.log(event.target.src)
+    console.log(event.target.dataset.description)
     imageFull.src = event.target.src;
+    (event.target.dataset.description !== 'null') ? descriptionFull.textContent = event.target.dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
     overlay.classList.add('overlay__index_up');
     overlayBack.classList.add('overlay__background_show');
   } else {
