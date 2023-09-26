@@ -6,6 +6,8 @@ const downloadLink = document.getElementById('download');
 const overlay = document.getElementById('overlay');
 const overlayBack = document.getElementById('overlay-back');
 const audioClick = document.getElementById('song-click');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
 
 let page = 1;
 let search = 'all';
@@ -117,6 +119,9 @@ window.addEventListener("scroll", throttle( () => {
   }
 }, 250));
 
+let images;
+let count = 0;
+
 document.body.addEventListener('click', () => {
   audioClick.play();
   if (event.target.classList == 'cards__image') {
@@ -127,11 +132,32 @@ document.body.addEventListener('click', () => {
     downloadLink.href = event.target.dataset.download;
     overlay.classList.add('overlay__index_up');
     overlayBack.classList.add('overlay__background_show');
+
+    images = document.getElementsByClassName('cards__image');
+    for (let i = 0; i < images.length; i++) if (images[i] === event.target) count = i;
   }
   if (event.target.classList.value === 'overlay__background overlay__background_show' || event.target.classList.value === 'overlay__background_controls') {
-    document.body.classList.remove('scroll-off');
-    document.getElementsByTagName('footer')[0].classList.remove('footer-padding');
     overlayBack.classList.remove('overlay__background_show');
-    setTimeout(() => { overlay.classList.remove('overlay__index_up'); },2000);
+    setTimeout(() => { 
+      overlay.classList.remove('overlay__index_up');
+      document.body.classList.remove('scroll-off');
+      document.getElementsByTagName('footer')[0].classList.remove('footer-padding');
+    },2000);
   }
 })
+
+btnPrev.addEventListener('click', () => {
+  count -= 1;
+  if (count < 0) count = images.length - 1;
+  imageFull.src = images[count].src;
+  downloadLink.href = images[count].dataset.download;
+  (images[count].dataset.description !== 'null') ? descriptionFull.textContent = images[count].dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+});
+
+btnNext.addEventListener('click', () => {
+  count += 1;
+  if (count > images.length - 1) count = 0;
+  imageFull.src = images[count].src;
+  downloadLink.href = images[count].dataset.download;
+  (images[count].dataset.description !== 'null') ? descriptionFull.textContent = images[count].dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+});
