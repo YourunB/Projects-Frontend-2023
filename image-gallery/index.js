@@ -117,15 +117,16 @@ window.addEventListener("scroll", throttle( () => {
   }
 }, 250));
 
-main.addEventListener('click', () => {
+document.body.addEventListener('click', () => {
   if (event.target.classList == 'cards__image') {
-    console.log(event.target.dataset.description)
     imageFull.src = event.target.src;
     (event.target.dataset.description !== 'null') ? descriptionFull.textContent = event.target.dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+    downloadLink.href = event.target.dataset.download;
     overlay.classList.add('overlay__index_up');
     overlayBack.classList.add('overlay__background_show');
-  } else {
-    overlay.classList.remove('overlay__index_up');
+  }
+  if (event.target.classList.value === 'overlay__background overlay__background_show' || event.target.classList.value === 'overlay__background_controls') {
     overlayBack.classList.remove('overlay__background_show');
+    setTimeout(() => { overlay.classList.remove('overlay__index_up'); },2000);
   }
 })
