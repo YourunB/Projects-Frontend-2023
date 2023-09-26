@@ -20,15 +20,16 @@
       <p class="overlay__background_info-content" id="full-decription"></p>
       <img class="overlay__background_image" id="full-image" src="assets/imges/background.png" alt="Image">
       <div class="overlay__background_controls">
-        <img class="overlay__background_controls_btn" src="assets/svg/left.svg" alt="Previous">
-        <img class="overlay__background_controls_btn" src="assets/svg/right.svg" alt="Next">
+        <img class="overlay__background_controls_btn" src="assets/svg/left.svg" alt="Previous" id="btn-prev">
+        <img class="overlay__background_controls_btn" src="assets/svg/right.svg" alt="Next" id="btn-next">
       </div>
     </div>
   </div>
   <div class="wrapper">
 
     <header>
-      <input id="search-image" placeholder="Enter to search" type="text" pattern="^[a-zA-Z \-']+$" required title="Enter on English" autocomplete="off" autofocus>
+      <img src="assets/svg/cancel.svg" alt="Cancel" title="Clear search" id="clear-search" class="header__clear-btn">
+      <input id="search-image" placeholder="Enter to search" type="text" title="Enter to search and click enter" autocomplete="off" autofocus>
       <div class="header__app">
         <h1>Image Gallery</h1>
         <img src="assets/svg/photo.svg" alt="Photo" class="header__app_image">
