@@ -41,7 +41,8 @@ input {
   width: 200px;
 }
 
-input:hover {
+input:hover,
+input:focus {
   width: calc(100% - 280px);
 }
 
@@ -312,6 +313,50 @@ footer {
   transform: translateX(0);
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #000000;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background-color: #000000;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #000000;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #FFFFFF;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #ffffff;
+}
+
+.scroll-off {
+  padding-right: 4.5px;
+  overflow: hidden;
+}
+
+.footer-padding {
+  padding-right: 14.5px;
+}
+
 .unvisible {
   display: none;
 }
@@ -359,7 +404,8 @@ footer {
   header {
     flex-wrap: wrap-reverse;
   }
-  input:hover {
+  input:hover,
+  input:focus {
     width: 100%;
   }
 }
