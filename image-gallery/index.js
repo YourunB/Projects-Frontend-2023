@@ -11,13 +11,13 @@ let page = 1;
 let search = 'all';
 
 window.addEventListener('keypress', () => {
-if (event.key === 'Enter' && inputSearch.value !== '') {
-  clearCards();
-  page = 1;
-  search = inputSearch.value;
-  getImages(page, search);
-  fillWindow();
-}
+  if (event.key === 'Enter' && inputSearch.value !== '') {
+    clearCards();
+    page = 1;
+    search = inputSearch.value;
+    getImages(page, search);
+    fillWindow();
+  }
 });
 
 inputSearch.addEventListener('input', () => {
@@ -120,6 +120,8 @@ window.addEventListener("scroll", throttle( () => {
 document.body.addEventListener('click', () => {
   audioClick.play();
   if (event.target.classList == 'cards__image') {
+    document.body.classList.add('scroll-off');
+    document.getElementsByTagName('footer')[0].classList.add('footer-padding');
     imageFull.src = event.target.src;
     (event.target.dataset.description !== 'null') ? descriptionFull.textContent = event.target.dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
     downloadLink.href = event.target.dataset.download;
@@ -127,6 +129,8 @@ document.body.addEventListener('click', () => {
     overlayBack.classList.add('overlay__background_show');
   }
   if (event.target.classList.value === 'overlay__background overlay__background_show' || event.target.classList.value === 'overlay__background_controls') {
+    document.body.classList.remove('scroll-off');
+    document.getElementsByTagName('footer')[0].classList.remove('footer-padding');
     overlayBack.classList.remove('overlay__background_show');
     setTimeout(() => { overlay.classList.remove('overlay__index_up'); },2000);
   }
