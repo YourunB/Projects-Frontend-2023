@@ -1,5 +1,6 @@
 const inputSearch = document.getElementById('search-image');
 const clearSearch = document.getElementById('clear-search');
+const btnSearch = document.getElementById('btn-search');
 const main = document.getElementById('main');
 const imageFull = document.getElementById('full-image');
 const descriptionFull = document.getElementById('full-decription');
@@ -14,38 +15,51 @@ let page = 1;
 let search = 'all';
 
 window.addEventListener('keypress', () => {
-  if (event.key === 'Enter' && inputSearch.value !== '') {
+  if (event.key === 'Enter' && inputSearch.value.length > 0) {
     clearCards();
     page = 1;
     search = inputSearch.value;
     getImages(page, search);
     page += 1;
-    fillWindow();
+    setTimeout(() => { fillWindow(); }, 250);
+  }
+});
+
+btnSearch.addEventListener('click', () => {
+  if (inputSearch.value.length > 0) {
+    clearCards();
+    page = 1;
+    search = inputSearch.value;
+    getImages(page, search);
+    setTimeout(() => { fillWindow(); }, 250);
   }
 });
 
 inputSearch.addEventListener('input', () => {
-  if (inputSearch.value === '') {
+  if (inputSearch.value === '' || inputSearch.value.length === 0) {
     clearSearch.classList.remove('header__clear-btn-active');
+    btnSearch.classList.remove('header__search-btn-active');
     clearCards();
     page = 1;
     search = 'all';
     getImages(page, search);
-    page += 1;
-    fillWindow();
-  } else clearSearch.classList.add('header__clear-btn-active');
+    setTimeout(() => { fillWindow(); }, 250);
+  } else {
+    clearSearch.classList.add('header__clear-btn-active');
+    btnSearch.classList.add('header__search-btn-active');
+  }
 });
 
 clearSearch.addEventListener('click', () => {
-  if (inputSearch.value !== '') {
+  if (inputSearch.value.length > 0) {
     clearSearch.classList.remove('header__clear-btn-active');
+    btnSearch.classList.remove('header__search-btn-active');
     inputSearch.value = '';
     clearCards();
     page = 1;
     search = 'all';
     getImages(page, search);
-    page += 1;
-    fillWindow();
+    setTimeout(() => { fillWindow(); }, 250);
   }
 });
 
@@ -249,4 +263,4 @@ function handleGesture() {
   }
 }
 
-fillWindow();
+setTimeout(() => { fillWindow(); }, 250);
