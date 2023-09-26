@@ -209,6 +209,7 @@ footer {
   transform: translateY(-100%);
   transition: 2s;
   padding: 5px;
+  cursor: zoom-out;
 }
 
 .overlay__background_image {
@@ -271,6 +272,7 @@ footer {
 
 .overlay__background_info-content {
   position: fixed;
+  padding: 10px;
   width: 100%;
   text-transform: capitalize;
   left: 0;
