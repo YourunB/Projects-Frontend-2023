@@ -35,13 +35,15 @@ a {
 }
 
 input {
+  font-size: 22px;
   background: none;
   border: none;
   border-bottom: 2px white solid;
   outline: none;
   color: white;
   transition: 2s;
-  width: 200px;
+  width: 220px;
+  padding-left: 30px;
 }
 
 input:hover,
@@ -73,6 +75,7 @@ input:focus {
 }
 
 header {
+  position: relative;
   backdrop-filter: blur(5px);
   position: sticky;
   z-index: 5;
@@ -82,6 +85,33 @@ header {
   gap: 10px;
   justify-content: space-between;
   align-items: center;
+}
+
+.header__clear-btn {
+  position: fixed;
+  background: white;
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 25px;
+  height: 25px;
+  transition: 1s;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.header__clear-btn-active {
+  opacity: 1;
+}
+
+.header__clear-btn-active:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.header__clear-btn-active:active {
+  transition: 0.2s;
+  border-radius: 50%;
 }
 
 .header__app {
@@ -245,6 +275,11 @@ footer {
   opacity: 1;
 }
 
+.overlay__background_controls_btn:active {
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
 .overlay__index_up {z-index: 10;}
 .overlay__background_show {
   transform: translateY(0);
@@ -308,6 +343,7 @@ footer {
   transform: scale(1.1);
   cursor: pointer;
   rotate: 360deg;
+  border-radius: 50%;
 }
 
 .overlay__background_info-btn:hover + .overlay__background_info-content {
