@@ -1,4 +1,5 @@
 const inputSearch = document.getElementById('search-image');
+const clearSearch = document.getElementById('clear-search');
 const main = document.getElementById('main');
 const imageFull = document.getElementById('full-image');
 const descriptionFull = document.getElementById('full-decription');
@@ -18,25 +19,40 @@ window.addEventListener('keypress', () => {
     page = 1;
     search = inputSearch.value;
     getImages(page, search);
+    page += 1;
     fillWindow();
   }
 });
 
 inputSearch.addEventListener('input', () => {
   if (inputSearch.value === '') {
+    clearSearch.classList.remove('header__clear-btn-active');
     clearCards();
     page = 1;
     search = 'all';
     getImages(page, search);
+    page += 1;
+    fillWindow();
+  } else clearSearch.classList.add('header__clear-btn-active');
+});
+
+clearSearch.addEventListener('click', () => {
+  if (inputSearch.value !== '') {
+    clearSearch.classList.remove('header__clear-btn-active');
+    inputSearch.value = '';
+    clearCards();
+    page = 1;
+    search = 'all';
+    getImages(page, search);
+    page += 1;
     fillWindow();
   }
 });
 
-fillWindow();
 function fillWindow() {
   if (document.body.getBoundingClientRect().height <= window.screen.height) {
-    getImages(page, search);
     page += 1;
+    getImages(page, search);
   }
 }
 
@@ -49,6 +65,7 @@ function clearCards() {
 
 getImages(page, search);
 function getImages(page, search = 'all') {
+  console.log(page)
   let url = '';
   if (search === 'all') url = `https://api.unsplash.com/photos?client_id=4-EJtgSsL_fig8yHRfZ9DaV7_DqqHQZoahL2MaYrEw0&page=${page}`;
   else url = `https://api.unsplash.com/search/photos?client_id=4-EJtgSsL_fig8yHRfZ9DaV7_DqqHQZoahL2MaYrEw0&page=${page}&query=${search}`;
@@ -110,12 +127,9 @@ function throttle(callee, timeout) {
 }
 
 window.addEventListener("scroll", throttle( () => {
-  let pageSize = document.body.getBoundingClientRect().height;
-  let displaySize = window.screen.height;
-  let scrollPosition = window.scrollY;
-  if (scrollPosition + displaySize > pageSize - 20) {
+  if ( (document.body.scrollHeight - window.scrollY) - 100 <= (document.body.getBoundingClientRect().height) ) {
     page += 1;
-    getImages(page, search);
+    setTimeout(() => { getImages(page, search); }, 250);
   }
 }, 250));
 
@@ -234,3 +248,5 @@ function handleGesture() {
     },2000);
   }
 }
+
+fillWindow();
