@@ -1,11 +1,11 @@
 const inputSearch = document.getElementById('search-image');
 const main = document.getElementById('main');
-
 const imageFull = document.getElementById('full-image');
 const descriptionFull = document.getElementById('full-decription');
 const downloadLink = document.getElementById('download');
 const overlay = document.getElementById('overlay');
 const overlayBack = document.getElementById('overlay-back');
+const audioClick = document.getElementById('song-click');
 
 let page = 1;
 let search = 'all';
@@ -118,6 +118,7 @@ window.addEventListener("scroll", throttle( () => {
 }, 250));
 
 document.body.addEventListener('click', () => {
+  audioClick.play();
   if (event.target.classList == 'cards__image') {
     imageFull.src = event.target.src;
     (event.target.dataset.description !== 'null') ? descriptionFull.textContent = event.target.dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
