@@ -135,14 +135,16 @@ document.body.addEventListener('click', () => {
 
     images = document.getElementsByClassName('cards__image');
     for (let i = 0; i < images.length; i++) if (images[i] === event.target) count = i;
-  }
-  if (event.target.classList.value === 'overlay__background overlay__background_show' || event.target.classList.value === 'overlay__background_controls') {
-    overlayBack.classList.remove('overlay__background_show');
-    setTimeout(() => { 
-      overlay.classList.remove('overlay__index_up');
-      document.body.classList.remove('scroll-off');
-      document.getElementsByTagName('footer')[0].classList.remove('footer-padding');
-    },2000);
+  } 
+  if (navigator.maxTouchPoints === 0) {
+    if (event.target.classList.value === 'overlay__background overlay__background_show' || event.target.classList.value === 'overlay__background_controls') {
+      overlayBack.classList.remove('overlay__background_show');
+      setTimeout(() => { 
+        overlay.classList.remove('overlay__index_up');
+        document.body.classList.remove('scroll-off');
+        document.getElementsByTagName('footer')[0].classList.remove('footer-padding');
+      },2000);
+    }
   }
 })
 
