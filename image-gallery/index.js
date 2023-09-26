@@ -147,17 +147,33 @@ document.body.addEventListener('click', () => {
 })
 
 btnPrev.addEventListener('click', () => {
+  imageFull.classList.add('hide');
   count -= 1;
   if (count < 0) count = images.length - 1;
-  imageFull.src = images[count].src;
-  downloadLink.href = images[count].dataset.download;
-  (images[count].dataset.description !== 'null') ? descriptionFull.textContent = images[count].dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+  setTimeout(()=>{
+    imageFull.src = images[count].src;
+    downloadLink.href = images[count].dataset.download;
+    (images[count].dataset.description !== 'null') ? descriptionFull.textContent = images[count].dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+    imageFull.classList.remove('hide');
+    imageFull.classList.add('show');
+    setTimeout(() => {
+      imageFull.classList.remove('show');
+    }, 200);
+  },200);
 });
 
 btnNext.addEventListener('click', () => {
+  imageFull.classList.add('hide');
   count += 1;
   if (count > images.length - 1) count = 0;
-  imageFull.src = images[count].src;
-  downloadLink.href = images[count].dataset.download;
-  (images[count].dataset.description !== 'null') ? descriptionFull.textContent = images[count].dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+  setTimeout(()=>{
+    imageFull.src = images[count].src;
+    downloadLink.href = images[count].dataset.download;
+    (images[count].dataset.description !== 'null') ? descriptionFull.textContent = images[count].dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+    imageFull.classList.remove('hide');
+    imageFull.classList.add('show');
+    setTimeout(() => {
+      imageFull.classList.remove('show');
+    }, 200);
+  },200);
 });
