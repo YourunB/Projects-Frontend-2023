@@ -106,7 +106,7 @@ function getImages(page, search = 'all') {
 
     } catch (error) {
       if (error != "") {
-        console.log("Error: " + error);
+        console.log("Error: " + error + "\nCheck the app later.");
       }
     }
   }
@@ -145,9 +145,15 @@ btnUp.addEventListener('click', () => {
 });
 
 window.addEventListener("scroll", throttle( () => {
-  if (window.scrollY > 400) btnUp.classList.remove('unvisible');
+  const height = document.body.offsetHeight;
+  const screenHeight = window.innerHeight;
+  const scrolled = window.scrollY;
+  const threshold = height - screenHeight / 4;
+  const position = scrolled + screenHeight;
+
+  if (scrolled > 400) btnUp.classList.remove('unvisible');
   else btnUp.classList.add('unvisible');
-  if ( (document.body.scrollHeight - window.scrollY) - 100 <= (document.body.getBoundingClientRect().height) ) {
+  if (position >= threshold) {
     page += 1;
     setTimeout(() => { getImages(page, search); }, 250);
   }
