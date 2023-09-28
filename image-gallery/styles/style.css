@@ -426,7 +426,7 @@ footer {
 }
 
 *::-webkit-scrollbar-track:active {
-  background-color: #FFFFFF;
+  background-color: #000000;
 }
 
 *::-webkit-scrollbar-thumb {
