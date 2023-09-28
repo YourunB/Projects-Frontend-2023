@@ -10,11 +10,12 @@ const overlayBack = document.getElementById('overlay-back');
 const audioClick = document.getElementById('song-click');
 const btnPrev = document.getElementById('btn-prev');
 const btnNext = document.getElementById('btn-next');
+const btnUp = document.getElementById('btn-up');
 
 let page = 1;
 let search = 'all';
 
-window.addEventListener('keypress', () => {
+inputSearch.addEventListener('keypress', () => {
   if (event.key === 'Enter' && inputSearch.value.length > 0) {
     clearCards();
     page = 1;
@@ -79,7 +80,6 @@ function clearCards() {
 
 getImages(page, search);
 function getImages(page, search = 'all') {
-  console.log(page)
   let url = '';
   if (search === 'all') url = `https://api.unsplash.com/photos?client_id=4-EJtgSsL_fig8yHRfZ9DaV7_DqqHQZoahL2MaYrEw0&page=${page}`;
   else url = `https://api.unsplash.com/search/photos?client_id=4-EJtgSsL_fig8yHRfZ9DaV7_DqqHQZoahL2MaYrEw0&page=${page}&query=${search}`;
@@ -140,7 +140,13 @@ function throttle(callee, timeout) {
   }
 }
 
+btnUp.addEventListener('click', () => {
+  window.scroll({top: 0, behavior: "smooth"});
+});
+
 window.addEventListener("scroll", throttle( () => {
+  if (window.scrollY > 400) btnUp.classList.remove('unvisible');
+  else btnUp.classList.add('unvisible');
   if ( (document.body.scrollHeight - window.scrollY) - 100 <= (document.body.getBoundingClientRect().height) ) {
     page += 1;
     setTimeout(() => { getImages(page, search); }, 250);
