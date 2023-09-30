@@ -372,7 +372,7 @@ footer {
   left: 0;
   bottom: 180px;
   transition: 1.5s;
-  transform: translateX(-100%);
+  transform: translateX(-120%);
 }
 
 .overlay__background_download:hover {
