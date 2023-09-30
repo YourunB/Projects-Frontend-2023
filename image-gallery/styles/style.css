@@ -443,8 +443,11 @@ footer {
 }
 
 .scroll-off {
-  padding-right: 4.5px;
   overflow: hidden;
+}
+
+.scroll-padding {
+  padding-right: 4.5px;
 }
 
 .footer-padding {
