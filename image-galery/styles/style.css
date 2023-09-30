@@ -61,6 +61,19 @@ input:focus {
   padding: 0 10px;
 }
 
+.background {
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  height: calc(100vh - 10px);
+  width: 100vw;
+  background-image: url('../assets/imges/background.png');
+  background-repeat: no-repeat;
+  background-position: 30px calc(100% - 30px);
+  background-size: 30vh;
+}
+
 header {
   position: relative;
   backdrop-filter: blur(5px);
@@ -76,6 +89,74 @@ header {
 
 .header__search {
   width: calc(100% - 280px);
+}
+
+.header__search-btn {
+  position: fixed;
+  left: 30px;
+  background: white;
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 25px;
+  height: 25px;
+  transition: 1s;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.header__search-btn-active {
+  opacity: 1;
+}
+
+.header__search-btn-active:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.header__search-btn-active:active {
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+.header__clear-btn {
+  position: fixed;
+  background: white;
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 25px;
+  height: 25px;
+  transition: 1s;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.header__clear-btn-active {
+  opacity: 1;
+}
+
+.header__clear-btn-active:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.header__clear-btn-active:active {
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+.header__app {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__app_image {
+  width: 50px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 main {
@@ -166,6 +247,34 @@ footer {
   gap: 10px;
   box-sizing: border-box;
   padding-right: 10px;
+}
+
+.footer__logo {
+  height: 50px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 1s;
+  opacity: 0.5;
+}
+
+.footer__logo:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.footer__year {
+  cursor: default;
+  opacity: 0.5;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+  text-shadow: 0 0 5px rgb(0,0,0, 1);
+  transition: 1s;
+}
+
+.footer__year:hover {
+  opacity: 1;
 }
 
 .overlay {
