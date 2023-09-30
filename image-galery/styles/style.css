@@ -400,3 +400,14 @@ footer {
 		transform-origin: 50% 100%;
 	}
 }
+
+@media (max-width: 576px) {
+  header {
+    flex-wrap: wrap-reverse;
+  }
+  .header__search {
+    min-width: 300px;
+    max-width: 100%;
+    width: 100%;
+  }
+}
