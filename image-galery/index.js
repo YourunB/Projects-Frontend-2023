@@ -1,3 +1,5 @@
+console.log("Оценка 70/60\n1. Вёрстка +10\n1.1. на странице есть несколько фото и строка поиска +5\n1.2. в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5\n2. При загрузке приложения на странице отображаются полученные от API изображения +10\n3. Если в поле поиска ввести слово и отправить поисковый запрос, на странице отобразятся изображения соответствующей тематики, если такие данные предоставляет API +10\n4. Поиск +30\n4.1. при открытии приложения курсор находится в поле ввода +5\n4.2. есть placeholder +5\n4.3. автозаполнение поля ввода отключено (нет выпадающего списка с предыдущими запросами) +5\n4.4. поисковый запрос можно отправить нажатием клавиши Enter +5\n4.5. после отправки поискового запроса и отображения результатов поиска, поисковый запрос продолжает отображаться в поле ввода +5\n4.6. в поле ввода есть крестик при клике по которому поисковый запрос из поля ввода удаляется и отображается placeholder +5\n5. Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10\n5.1. приложение имеет свой дизайн\n5.2. добавлена анимация для открытия/добавления изображений, описания изображений, взаимодействия с приложением\n5.3. сделан анимированный слайдер для просмотра изображений\n5.4. добавлена работа с сенсорным экраном, свайпы (перелистывания слайдов с картинками, закрытие свайпом вверх слайдера\n5.5. добавлена кнопка вверх при скролле изображений\n5.6. анимированный input и кнопки\n5.7. отображение описания картинки\n5.8. дополнительное(альтернативное) описание изображения в слайдере при наведении на 'i'\n5.8. закрытие слайдера в десктопной версии по клику \n5.9. дополнительная кнопка и слайдера для открытия исходного изображения в максимальном разрешении для сохранения в новом окне браузера");
+
 const inputSearch = document.getElementById('search-image');
 const clearSearch = document.getElementById('clear-search');
 const btnSearch = document.getElementById('btn-search');
@@ -221,3 +223,61 @@ btnNext.addEventListener('click', () => {
     }, 200);
   },200);
 });
+
+overlay.addEventListener('touchstart', function (event) {
+  touchstartX = event.changedTouches[0].screenX;
+  touchstartY = event.changedTouches[0].screenY;
+}, false);
+
+overlay.addEventListener('touchend', function (event) {
+  touchendX = event.changedTouches[0].screenX;
+  touchendY = event.changedTouches[0].screenY;
+  handleGesture();
+}, false);
+
+
+function handleGesture() {
+  if (touchendX < touchstartX) { //Swiped Left
+    imageFull.classList.add('hide');
+    count += 1;
+    if (count > images.length - 1) count = 0;
+    setTimeout(()=>{
+      imageFull.src = images[count].src;
+      downloadLink.href = images[count].dataset.download;
+      (images[count].dataset.description !== 'null') ? descriptionFull.textContent = images[count].dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+      imageFull.classList.remove('hide');
+      imageFull.classList.add('show');
+      setTimeout(() => {
+        imageFull.classList.remove('show');
+      }, 200);
+    },200);
+  }
+
+  if (touchendX > touchstartX) { //Swiped Right
+    imageFull.classList.add('hide');
+    count -= 1;
+    if (count < 0) count = images.length - 1;
+    setTimeout(()=>{
+      imageFull.src = images[count].src;
+      downloadLink.href = images[count].dataset.download;
+      (images[count].dataset.description !== 'null') ? descriptionFull.textContent = images[count].dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
+      imageFull.classList.remove('hide');
+      imageFull.classList.add('show');
+      setTimeout(() => {
+        imageFull.classList.remove('show');
+      }, 200);
+    },200);
+  }
+
+  if (touchendY < touchstartY) { // Swiped Up
+    overlayBack.classList.remove('overlay__background_show');
+    setTimeout(() => { 
+      overlay.classList.remove('overlay__index_up');
+      document.body.classList.remove('scroll-off');
+      document.body.classList.remove('scroll-padding');
+      document.getElementsByTagName('footer')[0].classList.remove('footer-padding');
+    },2000);
+  }
+}
+
+setTimeout(() => { fillWindow(); }, 250);
