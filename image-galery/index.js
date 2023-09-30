@@ -71,6 +71,13 @@ function fillWindow() {
   }
 }
 
+function clearCards() {
+  let cards = document.getElementsByClassName('cards');
+  for (let i = cards.length - 1; i >= 0; i -= 1) {
+    cards[i].remove();
+  }
+}
+
 getImages(page, search);
 function getImages(page, search = 'all') {
   let url = '';
