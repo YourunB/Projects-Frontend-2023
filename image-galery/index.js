@@ -168,8 +168,10 @@ document.body.addEventListener('click', () => {
   audioClick.play();
   if (event.target.classList == 'cards__image') {
     document.body.classList.add('scroll-off');
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) === false) document.body.classList.add('scroll-padding');
-    document.getElementsByTagName('footer')[0].classList.add('footer-padding');
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) === false) {
+      document.body.classList.add('scroll-padding');
+      document.getElementsByTagName('footer')[0].classList.add('footer-padding');
+    }
     imageFull.src = event.target.src;
     (event.target.dataset.description !== 'null') ? descriptionFull.textContent = event.target.dataset.description : descriptionFull.textContent = 'There is no additional description to this image';
     downloadLink.href = event.target.dataset.download;
