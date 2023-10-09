@@ -146,7 +146,7 @@ main {
   justify-content: center;
   grid-template-columns: repeat(5, 10%);
   gap: 2%;
-  perspective: 1000px;
+  perspective: 2000px;
   height: fit-content;
 }
 
@@ -180,6 +180,41 @@ main {
   opacity: 0.9;
   color: gray;
   animation: fadeOut 3s linear forwards;
+}
+
+.card {
+  position: relative;
+  line-height: 0;
+  background: white;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  transition: 1s;
+  box-shadow: 4px 4px 4px 4px rgb(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  cursor: pointer;
+  scale: 1.1;
+  box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.card__front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.turn {
+  transform: rotateY(540deg);
+  box-shadow: -4px 4px 4px 4px rgb(0, 0, 0, 0.2);
+}
+
+.turn:hover {
+  box-shadow: -5px 5px 5px 5px rgb(0, 0, 0, 0.1);
 }
 
 footer {
