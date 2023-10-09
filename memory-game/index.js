@@ -46,6 +46,7 @@ function startGame() {
   welcomePage.classList.add('hide');
   setTimeout(() => {
     welcomePage.classList.add('unvisible');
+    createCards();
     audioMusic.play();
   }, 600);
 }
