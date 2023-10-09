@@ -22,3 +22,23 @@ body {
   justify-content: space-between;
   padding-bottom: 40px;
 }
+
+header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  padding: 0;
+  margin: 0;
+  cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
