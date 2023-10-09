@@ -37,6 +37,11 @@ welcomePage.addEventListener('keyup', () => {
 
 btnStart.addEventListener('click', () => { startGame(); });
 
+btnRefresh.addEventListener('click', () => {
+  audioShuffle.play();
+  deleteCards();
+});
+
 function startGame() {
   setTimeout(() => {
     document.getElementsByTagName('footer')[0].classList.add('show');
@@ -67,6 +72,22 @@ function createCards() {
   main.classList.add('show');
   main.classList.remove('unvisible');
   timerId = setTimeout(() => {turnCards();}, 7000);
+}
+
+function deleteCards() {
+  clearTimeout(timerId);
+  main.classList.remove('show');
+  main.classList.add('hide');
+  document.getElementsByTagName('footer')[0].classList.remove('show');
+  document.getElementsByTagName('footer')[0].classList.add('hide');
+  const cards = main.getElementsByClassName('card');
+  for (let i = cards.length - 1; i >= 0; i--) {
+    setTimeout(() => {cards[i].remove();}, 500);
+  }
+  setTimeout(() => {
+    createCards();
+    document.getElementsByTagName('footer')[0].classList.add('show');
+  }, 600);
 }
 
 function shuffleCards(arr) {
