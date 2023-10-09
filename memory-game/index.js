@@ -49,3 +49,26 @@ function startGame() {
     audioMusic.play();
   }, 600);
 }
+
+function createCards() {
+  shuffleCards(arrImages);
+  for (let i = 0; i < 20; i++) {
+    main.append(document.createElement('div'));
+    main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].classList.add('card');
+
+    main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].append(document.createElement('img'));
+    main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].getElementsByTagName('img')[main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].getElementsByTagName('img').length - 1].classList.add('card__front');
+    main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].getElementsByTagName('img')[main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].getElementsByTagName('img').length - 1].src = 'assets/imges/'+ arrImages[i] +'.jpg';
+
+    main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].append(document.createElement('img'));
+    main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].getElementsByTagName('img')[main.getElementsByTagName('div')[main.getElementsByTagName('div').length - 1].getElementsByTagName('img').length - 1].src = 'assets/imges/lamp.jpg';
+  }
+  main.classList.add('show');
+  main.classList.remove('unvisible');
+}
+
+function shuffleCards(arr) {
+  arr.sort(() => Math.random() - 0.5);
+  moves = 0;
+  endGame = 0;
+}
