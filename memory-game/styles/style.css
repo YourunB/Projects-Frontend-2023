@@ -268,6 +268,102 @@ footer {
   padding: 0;
 }
 
+.lamps li {
+  transition: 0.5s;
+  position: absolute;
+  bottom: -160px;
+  z-index: -3;
+  display: block;
+  list-style: none;
+  background: url('../assets/imges/lamp.png') no-repeat;
+  background-size: contain;
+  animation: lamps 40s infinite linear;
+}
+
+.lamps li:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  animation-delay: 0s;
+  left: 20%;
+}
+
+.lamps li:nth-child(2) {
+  width: 70px;
+  height: 70px;
+  animation-delay: 2s;
+  animation-duration: 13s;
+  left: 5%;
+}
+
+.lamps li:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  animation-delay: 12s;
+  left: 50%;
+}
+
+.lamps li:nth-child(4) {
+  width: 65px;
+  height: 65px;
+  animation-delay: 0s;
+  animation-duration: 17s;
+  left: 40%;
+}
+
+.lamps li:nth-child(5) {
+  width: 80px;
+  height: 80px;
+  animation-delay: 1s;
+  left: 60%;
+}
+
+.lamps li:nth-child(6) {
+  width: 60px;
+  height: 60px;
+  animation-delay: 5s;
+  left: 80%;
+}
+
+.lamps li:nth-child(7) {
+  width: 70px;
+  height: 70px;
+  animation-delay: 6s;
+  left: 30%;
+}
+
+.lamps li:nth-child(8) {
+  width: 90px;
+  height: 90px ;
+  animation-delay: 14s;
+  animation-duration: 50s;
+  left: 45%;
+}
+
+.lamps li:nth-child(9) {
+  width: 70px;
+  height: 70px;
+  animation-delay: 3s;
+  animation-duration: 45s;
+  left: 12%;
+}
+
+.lamps li:nth-child(10) {
+  width: 80px;
+  height: 80px;
+  animation-delay: 1s;
+  animation-duration: 12s;
+  left: 95%;
+}
+
+@keyframes lamps {
+  0% {transform: translateY(0) rotate(0deg);}
+  70% {opacity: 1;}
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
 .hide {animation: hide 0.5s forwards;}
 .show {animation: show 0.5s forwards;}
 .unvisible {display: none;}
