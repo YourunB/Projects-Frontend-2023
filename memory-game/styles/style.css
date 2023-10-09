@@ -416,11 +416,35 @@ footer {
 *::-webkit-scrollbar-thumb:hover {background-color: rgb(255, 210, 125);}
 *::-webkit-scrollbar-thumb:active {background-color: #ffffff;}
 
+@keyframes hide {   
+  0% {opacity: 0.9;}
+  100% {opacity: 0;}
+}
+
+@keyframes show {   
+  0% {opacity: 0;}
+  100% {opacity: 0.9;}
+}
+
 @keyframes fadeOut {
   0% { 
     opacity: 0.4; 
-    transform: translate(-50%, -30%);}
+    transform: translate(-50%, -30%);
+  }
   100% { 
     opacity: 0.9; 
-    transform: translate(-50%, -50%);}
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .score {
+    width: 100%;
+  }
 }
