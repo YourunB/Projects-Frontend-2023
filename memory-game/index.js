@@ -26,3 +26,26 @@ let endGame = 0;
 
 let userName = '';
 const arrImages = [0,0,0,0,1,1,2,2,3,3,3,3,4,4,4,4,5,5,5,5];
+
+inputName.addEventListener('input', () => {
+  if (inputName.value.length > 0 && /\S/.test(inputName.value)) btnStart.disabled = false;
+});
+
+welcomePage.addEventListener('keyup', () => {
+  if (event.key === 'Enter' && inputName.value.length > 0 && /\S/.test(inputName.value)) startGame();
+});
+
+btnStart.addEventListener('click', () => { startGame(); });
+
+function startGame() {
+  setTimeout(() => {
+    document.getElementsByTagName('footer')[0].classList.add('show');
+    document.getElementsByTagName('footer')[0].classList.remove('unvisible');
+  }, 1000);
+  userName = inputName.value;
+  welcomePage.classList.add('hide');
+  setTimeout(() => {
+    welcomePage.classList.add('unvisible');
+    audioMusic.play();
+  }, 600);
+}
