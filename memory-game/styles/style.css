@@ -99,13 +99,6 @@ body {
   padding-bottom: 40px;
 }
 
-header {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 h1 {
   text-align: center;
   color: white;
@@ -117,6 +110,17 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__name img {
+  height: 50px;
 }
 
 .btn {
@@ -139,6 +143,16 @@ h1 {
   transition: 0.2s;
   transform: scale(0.9);
   background-color: rgb(255, 255, 132);
+}
+
+.container {
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
