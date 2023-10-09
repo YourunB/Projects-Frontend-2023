@@ -14,3 +14,15 @@ const audioComplete = document.getElementById('audio-complete');
 const messageWindow = document.getElementById('message');
 const salutGif = document.getElementById('salut');
 const resultsContainer = document.getElementById('results-container');
+
+let timerId;
+
+let newMoves = true;
+let moves = 0;
+let count = 0;
+let card1;
+let card2;
+let endGame = 0;
+
+let userName = '';
+const arrImages = [0,0,0,0,1,1,2,2,3,3,3,3,4,4,4,4,5,5,5,5];
