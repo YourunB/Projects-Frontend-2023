@@ -123,3 +123,24 @@ function turnCards() {
 
   }
 }
+
+function addToLocalStorageScore() {
+  if (localStorage.getItem('scores') === null) {
+    let arr = [
+      {
+        name: userName,
+        score: moves,
+      },
+    ];
+    localStorage.scores = JSON.stringify(arr);
+  } else {
+    let arrAdd = JSON.parse(localStorage.scores);
+    arrAdd.push({
+      name: userName,
+      score: moves,
+    });
+    arrAdd.sort((x, y) => x.score - y.score);
+    if (arrAdd.length >= 10) arrAdd.length = 10;
+    localStorage.scores = JSON.stringify(arrAdd);
+  }
+}
