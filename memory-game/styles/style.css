@@ -243,6 +243,31 @@ footer {
   text-align: center;
 }
 
+.window-lamps {
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('../assets/imges/brain2.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.lamps {
+  overflow: hidden;
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .hide {animation: hide 0.5s forwards;}
 .show {animation: show 0.5s forwards;}
 .unvisible {display: none;}
