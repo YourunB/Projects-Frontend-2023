@@ -66,10 +66,39 @@ function createCards() {
   }
   main.classList.add('show');
   main.classList.remove('unvisible');
+  timerId = setTimeout(() => {turnCards();}, 7000);
 }
 
 function shuffleCards(arr) {
   arr.sort(() => Math.random() - 0.5);
   moves = 0;
   endGame = 0;
+}
+
+function turnCards() {
+  const cards = document.getElementsByClassName('card');
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].classList.add('turn');
+
+    document.getElementsByClassName('card')[i].addEventListener('click', () => {
+      if (newMoves === true) {
+        
+        if (count === 0 && document.getElementsByClassName('card')[i].classList.value === 'card turn') {
+          audioClick.play();
+          document.getElementsByClassName('card')[i].classList.remove('turn');
+          card1 = document.getElementsByClassName('card')[i];
+          count += 1;
+          moves += 1;
+        }
+        if (count === 1 && document.getElementsByClassName('card')[i] !== card1 && document.getElementsByClassName('card')[i].classList.value === 'card turn') {
+          audioClick.play();
+          document.getElementsByClassName('card')[i].classList.remove('turn');
+          card2 = document.getElementsByClassName('card')[i];
+          count += 1;
+          moves += 1;
+        }
+      };
+    });
+
+  }
 }
