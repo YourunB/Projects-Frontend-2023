@@ -61,6 +61,16 @@ btnScore.addEventListener('click', () => {
   }
 });
 
+btnCloseScore.addEventListener('click', () => {
+  scoreWindow.classList.remove('score__show');
+});
+
+document.body.addEventListener('click', () => {
+  if (scoreWindow.className === 'score score__show' && event.target.id !== 'btn-score') {
+    scoreWindow.classList.remove('score__show');
+  }
+});
+
 function startGame() {
   setTimeout(() => {
     document.getElementsByTagName('footer')[0].classList.add('show');
@@ -134,6 +144,7 @@ function turnCards() {
           audioClick.play();
           document.getElementsByClassName('card')[i].classList.remove('turn');
           card2 = document.getElementsByClassName('card')[i];
+          checkCards();
           count += 1;
           moves += 1;
         }
