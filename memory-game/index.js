@@ -42,6 +42,25 @@ btnRefresh.addEventListener('click', () => {
   deleteCards();
 });
 
+btnScore.addEventListener('click', () => {
+  scoreWindow.classList.add('score__show');
+  if (resultsContainer.getElementsByTagName('p').length > 0) {
+    for (let i = resultsContainer.getElementsByTagName('p').length - 1; i >= 0; i--) {
+      resultsContainer.getElementsByTagName('p')[i].remove();
+    }
+  }
+  if (localStorage.scores) {
+    let arr = JSON.parse(localStorage.scores);
+    for (let i = 0; i < arr.length; i++) {
+      resultsContainer.append(document.createElement('p'));
+      resultsContainer.getElementsByTagName('p')[resultsContainer.getElementsByTagName('p').length - 1].textContent = arr[i].name + ': ' + arr[i].score + ' moves'; 
+    }
+  } else {
+    resultsContainer.append(document.createElement('p'));
+    resultsContainer.getElementsByTagName('p')[resultsContainer.getElementsByTagName('p').length - 1].textContent = "You don't have any games played yet."; 
+  }
+});
+
 function startGame() {
   setTimeout(() => {
     document.getElementsByTagName('footer')[0].classList.add('show');
