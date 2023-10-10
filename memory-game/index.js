@@ -124,6 +124,40 @@ function turnCards() {
   }
 }
 
+function checkCards() {
+  newMoves = false;
+  setTimeout(() => {
+    if (card1.getElementsByClassName('card__front')[0].src === card2.getElementsByClassName('card__front')[0].src) {
+      count = 0
+      card1 = undefined;
+      card2 = undefined;
+      newMoves = true;
+      audioCongratulation.play();
+      endGame += 1;
+      if (endGame >= 10) {
+        addToLocalStorageScore();
+        messageWindow.innerHTML = `Congratulations!<br>You have passed the game.<br>Total moves spent: ${moves}`;
+        salutGif.classList.remove('unvisible');
+        messageWindow.classList.remove('unvisible');
+        setTimeout(() => {audioComplete.play();}, 500);
+        setTimeout(() => {
+          salutGif.classList.add('unvisible');
+          document.body.addEventListener('click', () => {
+            if (messageWindow.classList.value === 'message') messageWindow.classList.add('unvisible');
+          });
+        }, 3000);
+      }
+    } else {
+      card1.classList.add('turn');
+      card2.classList.add('turn');
+      count = 0
+      card1 = undefined;
+      card2 = undefined;
+      newMoves = true;
+    }
+  }, 1000);
+}
+
 function addToLocalStorageScore() {
   if (localStorage.getItem('scores') === null) {
     let arr = [
