@@ -72,6 +72,7 @@ document.body.addEventListener('click', () => {
 });
 
 function startGame() {
+  createLamps();
   setTimeout(() => {
     document.getElementsByTagName('footer')[0].classList.add('show');
     document.getElementsByTagName('footer')[0].classList.remove('unvisible');
@@ -206,5 +207,17 @@ function addToLocalStorageScore() {
     arrAdd.sort((x, y) => x.score - y.score);
     if (arrAdd.length >= 10) arrAdd.length = 10;
     localStorage.scores = JSON.stringify(arrAdd);
+  }
+}
+
+function createLamps() {
+  document.body.prepend(document.createElement('div'));
+  document.getElementsByTagName('div')[0].classList.add('window-lamps');
+  document.getElementsByTagName('div')[0].append(document.createElement('ul'));
+  document.getElementsByTagName('ul')[0].classList.add('lamps');
+  let lamps = document.getElementsByClassName('lamps')[0];
+
+  for (let i = 0; i < 12; i++) {
+    lamps.append(document.createElement('li'));
   }
 }
