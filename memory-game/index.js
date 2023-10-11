@@ -1,4 +1,4 @@
-console.log('Оценка 70/60\n1 Вёрстка +10\n1.1 реализован интерфейс игры +5\n1.2 в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5\n2 Логика игры. Карточки, по которым кликнул игрок, переворачиваются согласно правилам игры +10\n3 Игра завершается, когда открыты все карточки +10\n4 По окончанию игры выводится её результат - количество ходов, которые понадобились для завершения игры +10\n5 Результаты последних 10 игр сохраняются в local storage. Есть таблица рекордов, в которой сохраняются результаты предыдущих 10 игр +10\n6 По клику на карточку – она переворачивается плавно, если пара не совпадает – обе карточки так же плавно переворачиваются рубашкой вверх +10\n7 Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10\n7.1 Свой дизайн игры\n7.2 Все действия в игре анимированы\n7.3 Добавлен экран приветствия с вводом имени пользователя\n7.4 Реализована дополнительная анимация экрана игры\n7.5 После завершения игры добавлено поздравление и салют\n7.6 Добавлена кнопка для сброса игры и игры заново\n7.7 Логика игры доработана, каждый раз карточки генерируются рандомным образом');
+console.log('Оценка 70/60\n1 Вёрстка +10\n1.1 реализован интерфейс игры +5\n1.2 в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5\n2 Логика игры. Карточки, по которым кликнул игрок, переворачиваются согласно правилам игры +10\n3 Игра завершается, когда открыты все карточки +10\n4 По окончанию игры выводится её результат - количество ходов, которые понадобились для завершения игры +10\n5 Результаты последних 10 игр сохраняются в local storage. Есть таблица рекордов, в которой сохраняются результаты предыдущих 10 игр +10\n6 По клику на карточку – она переворачивается плавно, если пара не совпадает – обе карточки так же плавно переварачиваются рубашкой вверх +10\n7 Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10\n7.1 Свой дизайн игры\n7.2 Все действия в игре анимированы\n7.3 Добавлен экаран приветствия с вводом имени пользователя\n7.4 Реализована дополнительная анимация экрана игры\n7.5 После завершения игры добавлено поздравление и салют\n7.6 Добавлена кнопка для сброса игры и игры заново\n7.7 Логика игры доработана, каждый раз карточки генерируются рандомным образом');
 
 const main = document.getElementById("main");
 const welcomePage = document.getElementById('welcome-page');
@@ -8,6 +8,8 @@ const btnStart = document.getElementById('btn-start');
 const btnRefresh = document.getElementById('btn-refresh');
 const btnScore = document.getElementById('btn-score');
 const btnCloseScore = document.getElementById('btn-close-score');
+const btnInstruction = document.getElementById('btn-instruction');
+const instructionWindow = document.getElementById('instruction-window');
 const audioMusic = document.getElementById('audio-music');
 const audioClick = document.getElementById('audio-click');
 const audioCongratulation = document.getElementById('audio-congratulation');
@@ -28,6 +30,16 @@ let endGame = 0;
 
 let userName = '';
 const arrImages = [0,0,0,0,1,1,2,2,3,3,3,3,4,4,4,4,5,5,5,5];
+
+instructionWindow.classList.add('instruction-show');
+setTimeout(() => {
+  instructionWindow.classList.remove('instruction-show');
+  inputName.focus();
+}, 5000)
+
+btnInstruction.addEventListener('click', () => {
+  instructionWindow.classList.add('instruction-show');
+});
 
 inputName.addEventListener('input', () => {
   if (inputName.value.length > 0 && /\S/.test(inputName.value)) btnStart.disabled = false;
@@ -59,7 +71,7 @@ btnScore.addEventListener('click', () => {
     }
   } else {
     resultsContainer.append(document.createElement('p'));
-    resultsContainer.getElementsByTagName('p')[resultsContainer.getElementsByTagName('p').length - 1].textContent = "You don't have any games played yet."; 
+    resultsContainer.getElementsByTagName('p')[resultsContainer.getElementsByTagName('p').length - 1].textContent = "You don't have any games played yet"; 
   }
 });
 
@@ -70,6 +82,10 @@ btnCloseScore.addEventListener('click', () => {
 document.body.addEventListener('click', () => {
   if (scoreWindow.className === 'score score__show' && event.target.id !== 'btn-score') {
     scoreWindow.classList.remove('score__show');
+  }
+  if (instructionWindow.className === 'instruction instruction-show' && event.target.id !== 'btn-instruction') {
+    instructionWindow.classList.remove('instruction-show');
+    if (welcomePage.classList.value !== 'welcome hide unvisible') inputName.focus();
   }
 });
 
