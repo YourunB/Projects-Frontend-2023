@@ -29,6 +29,7 @@ body {
   text-align: center;
   color: gray;
   transform: translateY(-100%);
+  cursor: default;
 }
 
 .instruction-show {
@@ -339,6 +340,7 @@ footer {
   display: flex;
   justify-content: center;
   transition: 1.5s;
+  cursor: default;
 }
 
 .score__btn {
