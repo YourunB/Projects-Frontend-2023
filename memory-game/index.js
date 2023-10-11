@@ -31,6 +31,16 @@ let endGame = 0;
 let userName = '';
 const arrImages = [0,0,0,0,1,1,2,2,3,3,3,3,4,4,4,4,5,5,5,5];
 
+instructionWindow.classList.add('instruction-show');
+setTimeout(() => {
+  instructionWindow.classList.remove('instruction-show');
+  inputName.focus();
+}, 5000)
+
+btnInstruction.addEventListener('click', () => {
+  instructionWindow.classList.add('instruction-show');
+});
+
 inputName.addEventListener('input', () => {
   if (inputName.value.length > 0 && /\S/.test(inputName.value)) btnStart.disabled = false;
 });
