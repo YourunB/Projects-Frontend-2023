@@ -16,7 +16,7 @@ body {
 }
 
 .instruction {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   z-index: 1;
@@ -326,7 +326,7 @@ footer {
 }
 
 .score {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   z-index: 101;
