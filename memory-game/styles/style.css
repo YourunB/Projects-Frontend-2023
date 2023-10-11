@@ -331,7 +331,7 @@ footer {
   top: 0;
   z-index: 101;
   width: 320px;
-  min-height: calc(100% - 20px);
+  min-height: calc(100vh - 20px);
   background-color: white;
   opacity: 0.9;
   background-image: url('../assets/imges/4.jpg');
