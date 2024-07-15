@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="styles/normalize.css" rel="stylesheet">
+  <link href="styles/style.css" rel="stylesheet">
+  <link rel="icon" href="assets/svg/music.svg">
+  <title>Audio Player</title>
+</head>
+<body>
+
+  <audio src="assets/audio/amsterdam.mp3" controls id="player"></audio>
+
+  <img src="assets/img/amsterdam.jpg" class="background" alt="Song" id="background-image">
+
+  <main>
+    <div class="player">
+      <div class="player__display">
+        <img class="player__display_song-img" src="assets/img/amsterdam.jpg" alt="Song" id="display-image">
+      </div>
+
+      <div class="player__controls">
+
+        <div class="player__controls_volume">
+          <p>Volume</p>
+          <input type="range" min="1" max="100" value="100" id="volume">
+        </div>
+
+        <button class="player__controls_mute player__controls_mute_off" id="btn-mute"></button>
+        <button class="player__controls_save" id="btn-save"></button>
+
+        <div class="player__controls_main">
+          <button id="btn-play-pause" class="player__controls_main_play"></button>
+
+          <div class="player__controls_main_song">
+            <h3 class="player__controls_main_song_artist" id="name-artist">Super Monkey</h3>
+            <p class="player__controls_main_song_name" id="name-song">Amsterdam</p>
+          </div>
+
+          <div>
+            <button class="player__controls_main_previous" id="btn-previous-song"></button>
+            <button class="player__controls_main_next" id="btn-next-song"></button>
+          </div>
+        </div>
+
+        <div class="player__controls_timing">
+          <p class="player__controls_timing_total" id="song-duration">3:06</p>
+          <input type="range" min="1" max="100" value="0" id="timeline" class="player__controls_timing_timeline">
+          <p class="player__controls_timing_passed" id="song-time">0:00</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer__year">&copy; 2023</p>
+    <a href="https://github.com/yourunb" title="Go to Github" target="_blank"><img class="footer__logo" src="assets/svg/github.svg" alt="Github"></a>
+    <a href="https://rs.school/js-stage0/" title="Go to RS School" target="_blank"><img class="footer__logo" src="assets/svg/rs_school-logo.svg" alt="RS School"></a>
+  </footer>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
